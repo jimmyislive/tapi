@@ -1,0 +1,763 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Examples &mdash; tapi 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="tapi 0.1 documentation" href="index.html" />
+    <link rel="prev" title="User Guide" href="userguide.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="userguide.html" title="User Guide"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">tapi 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="simple1">
+<span id="id1"></span><h2>Simple1<a class="headerlink" href="#simple1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;heading&quot;</span><span class="o">:</span> <span class="s2">&quot;simple1 example&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;tests&quot;</span><span class="o">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com/users&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The above makes a GET(default verb) request to the url and the response is verified to have a status code of 200 (default)</p>
+</div>
+<div class="section" id="simple2">
+<h2>Simple2<a class="headerlink" href="#simple2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;heading&quot;</span><span class="o">:</span> <span class="s2">&quot;simple2 example&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;tests&quot;</span><span class="o">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com/users&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;get&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span>
+        <span class="p">}</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The same as <a class="reference internal" href="#id1">Simple1</a>, it just makes the verb and status code checks explicit.</p>
+</div>
+<div class="section" id="simple3">
+<h2>Simple3<a class="headerlink" href="#simple3" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;heading&quot;</span><span class="o">:</span> <span class="s2">&quot;simple3 example&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;tests&quot;</span><span class="o">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com/users&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;accept-encoding&quot;</span><span class="o">:</span> <span class="s2">&quot;compress, gzip&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span>
+        <span class="p">}</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This makes a POST request to the endpoint (api.example.com/users) with POST payload name=bob. It also adds a request header of Accept-Encoding as &#8216;compress, gzip&#8217;. Response status_code is verified to be 201.</p>
+</div>
+<div class="section" id="simple4">
+<span id="id2"></span><h2>Simple4<a class="headerlink" href="#simple4" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;heading&quot;</span><span class="o">:</span> <span class="s2">&quot;simple4 example&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;tests&quot;</span><span class="o">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com/users/bob&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;accept-encoding&quot;</span><span class="o">:</span> <span class="s2">&quot;compress, gzip&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+            <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;content-type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;$.name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>GETs user bob details and ensures that the response header of Content-Type is set to application/json and response body is a dict which has key/value pair name/bob.</p>
+</div>
+<div class="section" id="intermediate1">
+<span id="id3"></span><h2>Intermediate1<a class="headerlink" href="#intermediate1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;heading&quot;</span><span class="o">:</span> <span class="s2">&quot;simple4 example&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;base_url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;common&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+          <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;content-type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;on_failure&quot;</span><span class="o">:</span> <span class="s2">&quot;abort&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;tests&quot;</span><span class="o">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users/bob&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;accept-encoding&quot;</span><span class="o">:</span> <span class="s2">&quot;compress, gzip&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;$.name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Similar to <a class="reference internal" href="#simple4">Simple4</a>. It adds a base_url to the global &#8216;common&#8217; section which will prepend base_url to every url parameter. Further it also says that every response should have a 200 status code and the Content-Type header should be set to application/json. Thus they have been removed from the tests[0]/response section as it is now redundant. It also specifies the action of &#8216;abort&#8217; in case any test fails.</p>
+</div>
+<div class="section" id="intermediate2">
+<h2>Intermediate2<a class="headerlink" href="#intermediate2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;heading&quot;</span><span class="o">:</span> <span class="s2">&quot;simple4 example&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;base_url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;common&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+          <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;content-type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;on_failure&quot;</span><span class="o">:</span> <span class="s2">&quot;abort&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;startup_harness&quot;</span><span class="o">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/init&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">}],</span>
+    <span class="s2">&quot;teardown_harness&quot;</span><span class="o">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/cleanup&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}],</span>
+    <span class="s2">&quot;tests&quot;</span><span class="o">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users/bob&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;accept-encoding&quot;</span><span class="o">:</span> <span class="s2">&quot;compress, gzip&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;$.name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Same as <a class="reference internal" href="#intermediate1">Intermediate1</a>, but it also specifies a startup/teardown action at the very begining and very end of the test run.</p>
+</div>
+<div class="section" id="advanced1">
+<span id="id4"></span><h2>Advanced1<a class="headerlink" href="#advanced1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;heading&quot;</span><span class="o">:</span> <span class="s2">&quot;simple4 example&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;base_url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;common&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+          <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;content-type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;on_failure&quot;</span><span class="o">:</span> <span class="s2">&quot;abort&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;startup_harness&quot;</span><span class="o">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/init&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">}],</span>
+    <span class="s2">&quot;teardown_harness&quot;</span><span class="o">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/cleanup&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}],</span>
+    <span class="s2">&quot;tests&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span> <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="mi">20</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span>
+            <span class="p">}</span>
+            <span class="s2">&quot;confirm&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users/bob&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;accept-encoding&quot;</span><span class="o">:</span> <span class="s2">&quot;compress, gzip&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;$.name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This example runs a test that has all three critical parts: request, response, confirmation. It posts data to the /users endpoint, verifies that the response is OK and then confirms that the API did indeed do what it said it was going to do by GETing the newly created resource.</p>
+</div>
+<div class="section" id="advanced2">
+<span id="id5"></span><h2>Advanced2<a class="headerlink" href="#advanced2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;heading&quot;</span><span class="o">:</span> <span class="s2">&quot;simple4 example&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;base_url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;common&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+          <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;content-type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;on_failure&quot;</span><span class="o">:</span> <span class="s2">&quot;abort&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;startup_harness&quot;</span><span class="o">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/init&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">}],</span>
+    <span class="s2">&quot;teardown_harness&quot;</span><span class="o">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/cleanup&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}],</span>
+    <span class="s2">&quot;tests&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span> <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="mi">20</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span>
+            <span class="p">}</span>
+            <span class="s2">&quot;confirm&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users/bob&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;accept-encoding&quot;</span><span class="o">:</span> <span class="s2">&quot;compress, gzip&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;$.name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+
+        <span class="p">{</span> <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;jane&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="mi">30</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span>
+            <span class="p">}</span>
+            <span class="s2">&quot;confirm&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users/jane&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;accept-encoding&quot;</span><span class="o">:</span> <span class="s2">&quot;compress, gzip&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;$.name&quot;</span><span class="o">:</span> <span class="s2">&quot;jane&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Similar to <a class="reference internal" href="#advanced1">Advanced1</a> but shows that you can add as many tests as you like because &#8216;tests&#8217; is a list. In the above example we add a new user jane and verify that she has been added too.</p>
+</div>
+<div class="section" id="advanced3">
+<h2>Advanced3<a class="headerlink" href="#advanced3" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;heading&quot;</span><span class="o">:</span> <span class="s2">&quot;simple4 example&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;base_url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;common&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+          <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;content-type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;on_failure&quot;</span><span class="o">:</span> <span class="s2">&quot;abort&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;startup_harness&quot;</span><span class="o">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/init&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">}],</span>
+    <span class="s2">&quot;teardown_harness&quot;</span><span class="o">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/cleanup&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}],</span>
+    <span class="s2">&quot;startup&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/start_timer&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+    <span class="s2">&quot;teardown&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/end_timer&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;tests&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span> <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="mi">20</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span>
+            <span class="p">}</span>
+            <span class="s2">&quot;confirm&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users/bob&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;accept-encoding&quot;</span><span class="o">:</span> <span class="s2">&quot;compress, gzip&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;$.name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+
+        <span class="p">{</span> <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;jane&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="mi">30</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span>
+            <span class="p">}</span>
+            <span class="s2">&quot;confirm&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users/jane&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;accept-encoding&quot;</span><span class="o">:</span> <span class="s2">&quot;compress, gzip&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;$.name&quot;</span><span class="o">:</span> <span class="s2">&quot;jane&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Similar to <a class="reference internal" href="#advanced2">Advanced2</a>, but here we also specify a global startup/teardown section. This will get called before <strong>each</strong> test run. (Note that the startup_harness/teardown_harness are called only once in their lifetime)</p>
+</div>
+<div class="section" id="advanced4">
+<h2>Advanced4<a class="headerlink" href="#advanced4" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;heading&quot;</span><span class="o">:</span> <span class="s2">&quot;simple4 example&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;base_url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;common&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+          <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;content-type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;on_failure&quot;</span><span class="o">:</span> <span class="s2">&quot;abort&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;startup_harness&quot;</span><span class="o">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/init&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">}],</span>
+    <span class="s2">&quot;teardown_harness&quot;</span><span class="o">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/cleanup&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}],</span>
+    <span class="s2">&quot;startup&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/start_timer&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+    <span class="s2">&quot;teardown&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/end_timer&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;tests&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span> <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="mi">20</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span>
+            <span class="p">}</span>
+            <span class="s2">&quot;confirm&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users/bob&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;accept-encoding&quot;</span><span class="o">:</span> <span class="s2">&quot;compress, gzip&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;$.name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+
+        <span class="p">{</span> <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;jane&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="mi">30</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span>
+            <span class="p">}</span>
+            <span class="s2">&quot;confirm&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users/jane&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;accept-encoding&quot;</span><span class="o">:</span> <span class="s2">&quot;compress, gzip&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;$.name&quot;</span><span class="o">:</span> <span class="s2">&quot;jane&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;startup&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/start_jane_timer&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;teardown&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/stop_jane_timer&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+        <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Similar to <a class="reference internal" href="#advanced3">Advanced3</a>, but now user jane has her own custom startup/teardown section. This shows that the global parameters can be overridden within the test very easily.</p>
+</div>
+<div class="section" id="advanced5">
+<h2>Advanced5<a class="headerlink" href="#advanced5" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;heading&quot;</span><span class="o">:</span> <span class="s2">&quot;simple4 example&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;base_url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;common&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+          <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;content-type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;on_failure&quot;</span><span class="o">:</span> <span class="s2">&quot;abort&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;startup_harness&quot;</span><span class="o">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/init&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">}],</span>
+    <span class="s2">&quot;teardown_harness&quot;</span><span class="o">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/cleanup&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}],</span>
+    <span class="s2">&quot;startup&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/start_timer&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+    <span class="s2">&quot;teardown&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/end_timer&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;tests&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;login&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/login&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="nx">johndoe</span><span class="s2">&quot;,</span>
+<span class="s2">                    &quot;</span><span class="nx">password</span><span class="s2">&quot;: johndoe_password&quot;</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+                <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;auth-token&quot;</span><span class="o">:</span> <span class="s2">&quot;*&quot;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="p">{</span>   <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="mi">20</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;auth-token&quot;</span><span class="o">:</span> <span class="s2">&quot;[[self.login.response.headers.auth-token]]&quot;</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span>
+            <span class="p">}</span>
+            <span class="s2">&quot;confirm&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users/bob&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;accept-encoding&quot;</span><span class="o">:</span> <span class="s2">&quot;compress, gzip&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;auth-token&quot;</span><span class="o">:</span> <span class="s2">&quot;[[self.login.response.headers.auth-token]]&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;$.name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+
+        <span class="p">{</span> <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;jane&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="mi">30</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;auth-token&quot;</span><span class="o">:</span> <span class="s2">&quot;[[self.login.response.headers.auth-token]]&quot;</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span>
+            <span class="p">}</span>
+            <span class="s2">&quot;confirm&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users/jane&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;accept-encoding&quot;</span><span class="o">:</span> <span class="s2">&quot;compress, gzip&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;auth-token&quot;</span><span class="o">:</span> <span class="s2">&quot;[[self.login.response.headers.auth-token]]&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;$.name&quot;</span><span class="o">:</span> <span class="s2">&quot;jane&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;startup&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/start_jane_timer&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;teardown&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/stop_jane_timer&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+        <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Similar to <a class="reference internal" href="#advanced4">Advanced4</a>, but here we begin everything with a test to /login. Note that we also assigned that test an id. We ensured that the response header has &#8216;auth-token&#8217; (but don&#8217;t worry about it&#8217;s content, hence the star). In later tests, we want to send in the same auth-token in every request and we do this by aceesing the original auth-token via the id of the login test i.e. self.login.response.headers.auth-token. (remember to enclose it in [[]])</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Examples</a><ul>
+<li><a class="reference internal" href="#simple1">Simple1</a></li>
+<li><a class="reference internal" href="#simple2">Simple2</a></li>
+<li><a class="reference internal" href="#simple3">Simple3</a></li>
+<li><a class="reference internal" href="#simple4">Simple4</a></li>
+<li><a class="reference internal" href="#intermediate1">Intermediate1</a></li>
+<li><a class="reference internal" href="#intermediate2">Intermediate2</a></li>
+<li><a class="reference internal" href="#advanced1">Advanced1</a></li>
+<li><a class="reference internal" href="#advanced2">Advanced2</a></li>
+<li><a class="reference internal" href="#advanced3">Advanced3</a></li>
+<li><a class="reference internal" href="#advanced4">Advanced4</a></li>
+<li><a class="reference internal" href="#advanced5">Advanced5</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="userguide.html"
+                        title="previous chapter">User Guide</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/examples.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="userguide.html" title="User Guide"
+             >previous</a> |</li>
+        <li><a href="index.html">tapi 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Jimmy John.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
+    </div>
+  </body>
+</html>
