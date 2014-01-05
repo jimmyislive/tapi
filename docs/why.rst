@@ -2,7 +2,7 @@
 Why use TAPI?
 =============
 
-Once you have built up your API server, comes the important task of writing tests for it. (or is it the other way around :))
+Once you have built up your API server, comes the important task of writing tests for it (or is it the other way around :))
 Testing APIs is a relatively simple, albeit time consuming task. It typically involves:
 
 1. Make a request to an endpoint (using one of the verbs like GET, POST, PUT etc)
