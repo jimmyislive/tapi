@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -13,7 +14,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
+        URL_ROOT:    '',
         VERSION:     '0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -600,8 +601,8 @@
                 <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/login&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="nx">johndoe</span><span class="s2">&quot;,</span>
-<span class="s2">                    &quot;</span><span class="nx">password</span><span class="s2">&quot;: johndoe_password&quot;</span>
+                    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;[[$USERNAME]]&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;password&quot;</span><span class="o">:</span> <span class="s2">&quot;[[$PASSWORD]]&quot;</span>
                 <span class="p">}</span>
             <span class="p">},</span>
             <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
@@ -690,7 +691,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Similar to <a class="reference internal" href="#advanced4">Advanced4</a>, but here we begin everything with a test to /login. Note that we also assigned that test an id. We ensured that the response header has &#8216;auth-token&#8217; (but don&#8217;t worry about it&#8217;s content, hence the star). In later tests, we want to send in the same auth-token in every request and we do this by aceesing the original auth-token via the id of the login test i.e. self.login.response.headers.auth-token. (remember to enclose it in [[]])</p>
+<p>Similar to <a class="reference internal" href="#advanced4">Advanced4</a>, but here we begin everything with a test to /login. Note that we also assigned that test an id. We ensured that the response header has &#8216;auth-token&#8217; (but don&#8217;t worry about it&#8217;s content, hence the star). In later tests, we want to send in the same auth-token in every request and we do this by aceesing the original auth-token via the id of the login test i.e. self.login.response.headers.auth-token. (remember to enclose it in [[]]). Also notice the [[$USERNAME]]. This means that the value of the environment variable $USERNAME is used here.</p>
 </div>
 </div>
 
@@ -757,7 +758,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2014, Jimmy John.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

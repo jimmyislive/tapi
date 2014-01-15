@@ -588,8 +588,8 @@ Advanced5
                     "url": "/login",
                     "verb": "post",
                     "payload": {
-                        "name": johndoe",
-                        "password": johndoe_password"
+                        "name": "[[$USERNAME]]",
+                        "password": "[[$PASSWORD]]"
                     }
                 },
                 "response": {
@@ -677,7 +677,7 @@ Advanced5
             ]
     }
 
-Similar to Advanced4_, but here we begin everything with a test to /login. Note that we also assigned that test an id. We ensured that the response header has 'auth-token' (but don't worry about it's content, hence the star). In later tests, we want to send in the same auth-token in every request and we do this by aceesing the original auth-token via the id of the login test i.e. self.login.response.headers.auth-token. (remember to enclose it in [[]])
+Similar to Advanced4_, but here we begin everything with a test to /login. Note that we also assigned that test an id. We ensured that the response header has 'auth-token' (but don't worry about it's content, hence the star). In later tests, we want to send in the same auth-token in every request and we do this by aceesing the original auth-token via the id of the login test i.e. self.login.response.headers.auth-token. (remember to enclose it in [[]]). Also notice the [[$USERNAME]]. This means that the value of the environment variable $USERNAME is used here.
 
 
 
