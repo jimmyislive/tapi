@@ -599,19 +599,22 @@ Advanced5
                     }
                 }
             }
-            {   "request": {
+            {   "id": "postuser",
+                "request": {
                     "url": "/users",
                     "verb": "post",
                     "payload": {
                         "name": "bob",
-                        "age": 20
+                        "age": 20,
+                        "bank": "[[script:request_postuser_bank]]"
                     },
                     "headers": {
                         "auth-token": "[[self.login.response.headers.auth-token]]"
                     }
                 },
                 "response": {
-                    "status_code": 201
+                    "status_code": 201,
+                    "body": "[[script:response_postuser_body]]"
                 }
                 "confirm": {
                     "request": {
@@ -677,7 +680,7 @@ Advanced5
             ]
     }
 
-Similar to Advanced4_, but here we begin everything with a test to /login. Note that we also assigned that test an id. We ensured that the response header has 'auth-token' (but don't worry about it's content, hence the star). In later tests, we want to send in the same auth-token in every request and we do this by aceesing the original auth-token via the id of the login test i.e. self.login.response.headers.auth-token. (remember to enclose it in [[]]). Also notice the [[$USERNAME]]. This means that the value of the environment variable $USERNAME is used here.
+Similar to Advanced4_, but here we begin everything with a test to /login. Note that we also assigned that test an id. We ensured that the response header has 'auth-token' (but don't worry about it's content, hence the star). In later tests, we want to send in the same auth-token in every request and we do this by aceesing the original auth-token via the id of the login test i.e. self.login.response.headers.auth-token. (remember to enclose it in [[]]). Also notice the [[$USERNAME]]. This means that the value of the environment variable $USERNAME is used here. The final point to notice is the ability to run arbitrary python scripts to either get some input value or verify some response result e.g. "bank": "[[script:request_postuser_bank]]". This means that the bank input parameter will be populated with the output of the script request_postuser_bank.py. Similarly "body": "[[script:response_postuser_body]]" means that the script response_postuser_body.py will be called and it's output should be True/False to indicate if it passed the check. Both scripts will receive the current unit test parametes as a json input. The convention is to name the python script as [request|response]_<id>_<field>.py. This way it will be easy to identify which test/field this script pertains to.
 
 
 

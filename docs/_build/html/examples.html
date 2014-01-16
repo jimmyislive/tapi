@@ -25,6 +25,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="tapi 0.1 documentation" href="index.html" />
+    <link rel="next" title="Source" href="source.html" />
     <link rel="prev" title="User Guide" href="userguide.html" /> 
   </head>
   <body>
@@ -34,6 +35,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="source.html" title="Source"
+             accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="userguide.html" title="User Guide"
              accesskey="P">previous</a> |</li>
@@ -612,19 +616,22 @@
                 <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
-        <span class="p">{</span>   <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="p">{</span>   <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;postuser&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
                 <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
                     <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="mi">20</span>
+                    <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="mi">20</span><span class="p">,</span>
+                    <span class="s2">&quot;bank&quot;</span><span class="o">:</span> <span class="s2">&quot;[[script:request_postuser_bank]]&quot;</span>
                 <span class="p">},</span>
                 <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
                     <span class="s2">&quot;auth-token&quot;</span><span class="o">:</span> <span class="s2">&quot;[[self.login.response.headers.auth-token]]&quot;</span>
                 <span class="p">}</span>
             <span class="p">},</span>
             <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span>
+                <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span><span class="p">,</span>
+                <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="s2">&quot;[[script:response_postuser_body]]&quot;</span>
             <span class="p">}</span>
             <span class="s2">&quot;confirm&quot;</span><span class="o">:</span> <span class="p">{</span>
                 <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
@@ -691,7 +698,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Similar to <a class="reference internal" href="#advanced4">Advanced4</a>, but here we begin everything with a test to /login. Note that we also assigned that test an id. We ensured that the response header has &#8216;auth-token&#8217; (but don&#8217;t worry about it&#8217;s content, hence the star). In later tests, we want to send in the same auth-token in every request and we do this by aceesing the original auth-token via the id of the login test i.e. self.login.response.headers.auth-token. (remember to enclose it in [[]]). Also notice the [[$USERNAME]]. This means that the value of the environment variable $USERNAME is used here.</p>
+<p>Similar to <a class="reference internal" href="#advanced4">Advanced4</a>, but here we begin everything with a test to /login. Note that we also assigned that test an id. We ensured that the response header has &#8216;auth-token&#8217; (but don&#8217;t worry about it&#8217;s content, hence the star). In later tests, we want to send in the same auth-token in every request and we do this by aceesing the original auth-token via the id of the login test i.e. self.login.response.headers.auth-token. (remember to enclose it in [[]]). Also notice the [[$USERNAME]]. This means that the value of the environment variable $USERNAME is used here. The final point to notice is the ability to run arbitrary python scripts to either get some input value or verify some response result e.g. &#8220;bank&#8221;: &#8220;[[script:request_postuser_bank]]&#8221;. This means that the bank input parameter will be populated with the output of the script request_postuser_bank.py. Similarly &#8220;body&#8221;: &#8220;[[script:response_postuser_body]]&#8221; means that the script response_postuser_body.py will be called and it&#8217;s output should be True/False to indicate if it passed the check. Both scripts will receive the current unit test parametes as a json input. The convention is to name the python script as [request|response]_&lt;id&gt;_&lt;field&gt;.py. This way it will be easy to identify which test/field this script pertains to.</p>
 </div>
 </div>
 
@@ -722,6 +729,9 @@
   <h4>Previous topic</h4>
   <p class="topless"><a href="userguide.html"
                         title="previous chapter">User Guide</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="source.html"
+                        title="next chapter">Source</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/examples.txt"
@@ -750,6 +760,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="source.html" title="Source"
+             >next</a> |</li>
         <li class="right" >
           <a href="userguide.html" title="User Guide"
              >previous</a> |</li>

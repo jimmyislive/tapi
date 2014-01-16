@@ -244,7 +244,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', 'tapi', u'tapi Documentation',
-   u'Jimmy John', 'tapi', 'One line description of project.',
+   u'Jimmy John', 'tapi', 'API Testing Framework.',
    'Miscellaneous'),
 ]
 
