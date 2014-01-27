@@ -1,0 +1,134 @@
+
+{
+        "heading": "simple4 example",
+        "base_url": "http://api.example.com",
+        "common": {
+            "response": {
+              "status_code": 200,
+              "headers": { 
+                "content-type": "application/json"
+              }
+            }
+        },
+        "on_failure": "abort",
+        "startup_harness": [{
+            "request": {
+                "url": "/init"
+            }
+        }],
+        "teardown_harness": [{
+            "request": {
+                "url": "/cleanup"
+            }
+        }],
+        "startup": [
+            {
+                "request": {
+                    "url": "/start_timer"
+                }
+            }
+        ],
+        "teardown": [
+            {
+                "request": {
+                    "url": "/end_timer"
+                }
+            }
+        ],
+        "tests": [ {
+                "id": "login",
+                "request": {
+                    "url": "/login",
+                    "verb": "post",
+                    "payload": {
+                        "name": "[[$USERNAME]]",
+                        "password": "[[$PASSWORD]]"
+                    }
+                },
+                "response": {
+                    "status_code": 200,
+                    "headers": {
+                        "auth-token": "*"
+                    }
+                }
+            },
+            {   "id": "postuser",
+                "request": {
+                    "url": "/users",
+                    "verb": "post",
+                    "payload": {
+                        "name": "bob",
+                        "age": 20,
+                        "bank": "[[script:request_postuser_bank]]"
+                    },
+                    "headers": {
+                        "auth-token": "[[self.login.response.headers.auth-token]]"
+                    }
+                },
+                "response": {
+                    "status_code": 201,
+                    "body": "[[script:response_postuser_body]]"
+                },
+                "confirm": {
+                    "request": {
+                        "url": "/users/bob",
+                        "verb": "get",
+                        "headers": {
+                            "accept-encoding": "compress, gzip",
+                            "auth-token": "[[self.login.response.headers.auth-token]]"
+                        }
+                    },
+                    "response": {
+                        "body": {
+                            "$.name": "bob"
+                        }
+                    }
+                }
+            },
+
+            { "request": {
+                    "url": "/users",
+                    "verb": "post",
+                    "payload": {
+                        "name": "jane",
+                        "age": 30
+                    },
+                    "headers": {
+                        "auth-token": "[[self.login.response.headers.auth-token]]"
+                    }
+                },
+                "response": {
+                    "status_code": 201
+                },
+                "confirm": {
+                    "request": {
+                        "url": "/users/jane",
+                        "verb": "get",
+                        "headers": {
+                            "accept-encoding": "compress, gzip",
+                            "auth-token": "[[self.login.response.headers.auth-token]]"
+                        }
+                    },
+                    "response": {
+                        "body": {
+                            "$.name": "jane"
+                        }
+                    }
+                },
+                "startup": [
+                    {
+                        "request": {
+                            "url": "/start_jane_timer"
+                        }
+                    }
+                ],
+                "teardown": [
+                    {
+                        "request": {
+                            "url": "/stop_jane_timer"
+                        }
+                    }
+                ]
+            }
+        ]
+}

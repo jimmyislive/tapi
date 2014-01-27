@@ -3,6 +3,7 @@ venv/*
 var/log/*
 var/run/*
 *.log
+pi.json
 
 # from github .gitignore template
 *.py[cod]

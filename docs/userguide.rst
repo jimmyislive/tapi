@@ -8,6 +8,17 @@ The default name of the json file is tapi.json. However, you could name it somet
 
     python tapi.py -c <my_new_config>.json
 
+By default the above will also verify that the provided json file has the correct format and all required key/values are present etc.
+If you only wish to verify the json file and not run any tests:
+
+    python tapi.py -v <my_new_config>.json
+
+You can also specify which test you wish to run by providing their ids: (default is to run all tests)
+
+    python tapi.py -c <my_new_config>.json -i id1,id2,id3
+
+See python tapi.py --help for more details.
+
 Overall Structure
 -----------------
 
@@ -214,7 +225,8 @@ The field descriptions are as follows:
 |          |        |          |          |                                                                                        |
 |          |        |          |          | headers - dict of header key/value pairs (Optional)                                    |
 |          |        |          |          |                                                                                        |
-|          |        |          |          | payload - dict of header key/value pairs (Optional)                                    |
+|          |        |          |          | payload - dict of key/value pairs or a string (Optional). If a dict is given, it will  |
+|          |        |          |          | be url-encoded. If string, it will be used as is.                                      |
 +----------+--------+----------+----------+----------+-----------------------------------------------------------------------------+
 | response | dict   | None     | No       | response object to be verified. Possible keys are:                                     |
 |          |        |          |          |                                                                                        |
