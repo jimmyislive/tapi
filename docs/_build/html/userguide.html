@@ -450,27 +450,29 @@ such situations, you can use Script Tapi Expressions. These are essentially pyth
 </div>
 <p>The framework will then look for the script request_some_id_authorization.py/request_some_id_payload.py in the same directory and execute it. The return value of the script is then used when making the HTTP request.</p>
 <p>The request scripts should have this general form:</p>
-<p>class RequestRunner(object):</p>
-<blockquote>
-<div><p>&#64;classmethod
-def get_value(cls, test_output_so_far, config_data):</p>
-<blockquote>
-<div><p>#do whatever you need here...</p>
-<p>return &#8216;some value&#8217;</p>
-</div></blockquote>
-</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">RequestRunner</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_value</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">test_output_so_far</span><span class="p">,</span> <span class="n">config_data</span><span class="p">):</span>
+
+        <span class="c">#do whatever you need here...</span>
+
+        <span class="k">return</span> <span class="s">&#39;some value&#39;</span>
+</pre></div>
+</div>
 <p>The framework will import RequestRunner and calls method get_value. The argument test_output_so_far is a dict of the test
 request/response results of any previous subsections so far e.g. startup, main subsections etc. The config_data is the json
 config of the test under consideration. Thus this function has all the info it needs and it can do whatever logic it wants to do
 and finally return a result to be used as a value in the HTTP request.</p>
 <p>Similarly the response tapi script has the form:</p>
-<p>class ResponseRunner(object):</p>
-<blockquote>
-<div><p>&#64;classmethod
-def validate(cls, test_output_so_far, test_config_data, response):</p>
-<blockquote>
-<div>return len(json.loads(response)) == 2</div></blockquote>
-</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">ResponseRunner</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">test_output_so_far</span><span class="p">,</span> <span class="n">test_config_data</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="p">))</span> <span class="o">==</span> <span class="mi">2</span>
+</pre></div>
+</div>
 <p>The framework will import ResponseRunner and call method validate. Args provided include the HTTP response object. The script
 can then do any calculation it neds and finally return a True/False answer.</p>
 <p>Sometimes, we would also like to access the value of a previously calculated header in future subsections. e.g. the first time
@@ -504,7 +506,7 @@ you login, if you get a auth-token. And later in every subsequent API call, you 
 </pre></div>
 </div>
 <p>The [[token:main.response.headers.auth-token]] tells the framework that the auth-token value should be the same as in the
-response header from the initial request. Note the asterix in the first api response. This tells the tapi frameworj to only
+response header from the initial request. Note the asterix in the first api response. This tells the tapi framework to only
 check for the existence of the key, any value returned by the server is ok.</p>
 </div>
 </div>

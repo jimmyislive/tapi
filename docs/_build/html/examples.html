@@ -57,8 +57,10 @@
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
     <span class="s2">&quot;heading&quot;</span><span class="o">:</span> <span class="s2">&quot;simple1 example&quot;</span><span class="p">,</span>
     <span class="s2">&quot;tests&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com/users&quot;</span>
+        <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com/users&quot;</span>
+            <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}]</span>
 <span class="p">}</span>
@@ -71,12 +73,14 @@
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
     <span class="s2">&quot;heading&quot;</span><span class="o">:</span> <span class="s2">&quot;simple2 example&quot;</span><span class="p">,</span>
     <span class="s2">&quot;tests&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com/users&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;get&quot;</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span>
+        <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com/users&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;get&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span>
+            <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}]</span>
 <span class="p">}</span>
@@ -89,18 +93,20 @@
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
     <span class="s2">&quot;heading&quot;</span><span class="o">:</span> <span class="s2">&quot;simple3 example&quot;</span><span class="p">,</span>
     <span class="s2">&quot;tests&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com/users&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;accept-encoding&quot;</span><span class="o">:</span> <span class="s2">&quot;compress, gzip&quot;</span>
+        <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com/users&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;accept-encoding&quot;</span><span class="o">:</span> <span class="s2">&quot;compress, gzip&quot;</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span>
+                <span class="p">}</span>
             <span class="p">},</span>
-            <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span>
+            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span>
             <span class="p">}</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span>
         <span class="p">}</span>
     <span class="p">}]</span>
 <span class="p">}</span>
@@ -113,20 +119,22 @@
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
     <span class="s2">&quot;heading&quot;</span><span class="o">:</span> <span class="s2">&quot;simple4 example&quot;</span><span class="p">,</span>
     <span class="s2">&quot;tests&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com/users/bob&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;accept-encoding&quot;</span><span class="o">:</span> <span class="s2">&quot;compress, gzip&quot;</span>
-            <span class="p">}</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
-            <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;content-type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span>
+        <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com/users/bob&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;accept-encoding&quot;</span><span class="o">:</span> <span class="s2">&quot;compress, gzip&quot;</span>
+                <span class="p">}</span>
             <span class="p">},</span>
-            <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;$.name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span>
+            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+                <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;content-type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;$.name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span>
+                <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}]</span>

@@ -356,15 +356,16 @@ The framework will then look for the script request_some_id_authorization.py/req
 
 The request scripts should have this general form:
 
+.. code-block:: python
 
-class RequestRunner(object):
+    class RequestRunner(object):
 
-    @classmethod
-    def get_value(cls, test_output_so_far, config_data):
+        @classmethod
+        def get_value(cls, test_output_so_far, config_data):
 
-        #do whatever you need here...
+            #do whatever you need here...
 
-        return 'some value'
+            return 'some value'
 
 The framework will import RequestRunner and calls method get_value. The argument test_output_so_far is a dict of the test 
 request/response results of any previous subsections so far e.g. startup, main subsections etc. The config_data is the json
@@ -373,12 +374,14 @@ and finally return a result to be used as a value in the HTTP request.
 
 Similarly the response tapi script has the form:
 
-class ResponseRunner(object):
+.. code-block:: python
 
-    @classmethod
-    def validate(cls, test_output_so_far, test_config_data, response):
+    class ResponseRunner(object):
 
-        return len(json.loads(response)) == 2
+        @classmethod
+        def validate(cls, test_output_so_far, test_config_data, response):
+
+            return len(json.loads(response)) == 2
 
 The framework will import ResponseRunner and call method validate. Args provided include the HTTP response object. The script 
 can then do any calculation it neds and finally return a True/False answer.
@@ -416,7 +419,7 @@ you login, if you get a auth-token. And later in every subsequent API call, you 
     }
 
 The [[token:main.response.headers.auth-token]] tells the framework that the auth-token value should be the same as in the 
-response header from the initial request. Note the asterix in the first api response. This tells the tapi frameworj to only
+response header from the initial request. Note the asterix in the first api response. This tells the tapi framework to only
 check for the existence of the key, any value returned by the server is ok.
 
 

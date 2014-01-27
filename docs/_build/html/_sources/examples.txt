@@ -11,8 +11,10 @@ Simple1
     {
         "heading": "simple1 example",
         "tests": [{
-            "request": {
-                "url": "http://api.example.com/users"
+            "main": {
+                "request": {
+                    "url": "http://api.example.com/users"
+                }
             }
         }]
     }
@@ -27,12 +29,14 @@ Simple2
     {
         "heading": "simple2 example",
         "tests": [{
-            "request": {
-                "url": "http://api.example.com/users",
-                "verb": "get"
-            },
-            "response": {
-                "status_code": 200
+            "main": {
+                "request": {
+                    "url": "http://api.example.com/users",
+                    "verb": "get"
+                },
+                "response": {
+                    "status_code": 200
+                }
             }
         }]
     }
@@ -47,18 +51,20 @@ Simple3
     {
         "heading": "simple3 example",
         "tests": [{
-            "request": {
-                "url": "http://api.example.com/users",
-                "verb": "post",
-                "headers": {
-                    "accept-encoding": "compress, gzip"
+            "main": {
+                "request": {
+                    "url": "http://api.example.com/users",
+                    "verb": "post",
+                    "headers": {
+                        "accept-encoding": "compress, gzip"
+                    },
+                    "payload": {
+                        "name": "bob"
+                    }
                 },
-                "payload": {
-                    "name": "bob"
+                "response": {
+                    "status_code": 201
                 }
-            },
-            "response": {
-                "status_code": 201
             }
         }]
     }
@@ -75,20 +81,22 @@ Simple4
     {
         "heading": "simple4 example",
         "tests": [{
-            "request": {
-                "url": "http://api.example.com/users/bob",
-                "verb": "get",
-                "headers": {
-                    "accept-encoding": "compress, gzip"
-                }
-            },
-            "response": {
-                "status_code": 200,
-                "headers": {
-                    "content-type": "application/json"
+            "main": {
+                "request": {
+                    "url": "http://api.example.com/users/bob",
+                    "verb": "get",
+                    "headers": {
+                        "accept-encoding": "compress, gzip"
+                    }
                 },
-                "body": {
-                    "$.name": "bob"
+                "response": {
+                    "status_code": 200,
+                    "headers": {
+                        "content-type": "application/json"
+                    },
+                    "body": {
+                        "$.name": "bob"
+                    }
                 }
             }
         }]
