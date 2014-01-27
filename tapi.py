@@ -232,7 +232,14 @@ class InputConfigValidator(object):
         if not len(tests):
             raise TapiConfigException('At least one test must be specified')
 
+        test_ids = []
+
         for test in tests:
+
+            if test.has_key('id') and test['id'] in test_ids:
+                raise TapiConfigException('test ids have to be unique. {0} is repeated'.format(test['id']))
+            else:
+                test_ids.append(test['id'])
 
             if test.has_key('startup'):
                 cls.verify_startup(test['startup'])
@@ -605,7 +612,7 @@ class Tapi(object):
                 try:
                     name = test_config['name']
                 except KeyError:
-                    name = test_config['request']['url']
+                    name = test_config['main']['request']['url']
 
                 print 'running test: {0}...'.format(name)
 
@@ -667,7 +674,7 @@ def parse_and_run(config_file, test_ids, only_verify_flag=False):
             if not only_verify_flag:
                 test_output = tapi.run(test_ids)
                 print
-                print 'Summary:'
+                print 'Summary: {0}'.format(tapi.heading)
                 print '********'
                 print 'Total tests run: {0}'.format(test_output['tot_count'])
                 print 'Total tests failed: {0}'.format(test_output['fail_count'])

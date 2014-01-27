@@ -6,12 +6,12 @@ In order to start using Tapi you have to write a tapi.json file. The simplest ta
 .. code-block:: javascript
 
     {
-        "heading": "simple1 example",
         "tests": [
             {
-                "name": "get all existing users",
-                "request": {
-                    "url": "http://api.example.com/users"
+                "main": {
+                    "request": {
+                        "url": "http://api.example.com/users"
+                    }
                 }
             }
         ]

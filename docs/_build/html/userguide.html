@@ -57,6 +57,71 @@ like. (Optionally specifying some confirmation steps as well)</p>
 <p>The default name of the json file is tapi.json. However, you could name it something diferrent and run it like:</p>
 <blockquote>
 <div>python tapi.py -c &lt;my_new_config&gt;.json</div></blockquote>
+<p>By default the above will also verify that the provided json file has the correct format and all required key/values are present etc.
+If you only wish to verify the json file and not run any tests:</p>
+<blockquote>
+<div>python tapi.py -c &lt;my_new_config&gt;.json -v</div></blockquote>
+<p>You can also specify which test you wish to run by providing their ids: (default is to run all tests)</p>
+<blockquote>
+<div>python tapi.py -c &lt;my_new_config&gt;.json -i id1,id2,id3</div></blockquote>
+<p>See python tapi.py &#8211;help for more details.</p>
+<div class="section" id="fundamentals">
+<h2>Fundamentals<a class="headerlink" href="#fundamentals" title="Permalink to this headline">¶</a></h2>
+<p>The fundamental elements in a tapi.json file is the request/response elements. A request element looks like:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;&lt;some url&gt;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;header_key1&quot;</span><span class="o">:</span> <span class="s2">&quot;header_value1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;header_key2&quot;</span><span class="o">:</span> <span class="s2">&quot;header_value2&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;payload_key1&quot;</span><span class="o">:</span> <span class="s2">&quot;payload_value1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;payload_key2&quot;</span><span class="o">:</span> <span class="s2">&quot;payload_value2&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The only required field in the above is the &#8216;url&#8217; field. The above snippet will cause a GET request to be made to the url
+&lt;some url&gt; along with headers as in the field &#8216;headers&#8217; and the &#8216;payload&#8217; form encoded.</p>
+<p>The &#8216;verb&#8217; defaults to GET. Other possible values are POST/PUT/DELETE</p>
+<p>A response element looks like:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+        <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;header_key1&quot;</span><span class="o">:</span> <span class="s2">&quot;header_value1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;header_key2&quot;</span><span class="o">:</span> <span class="s2">&quot;header_value2&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;$.name&quot;</span><span class="o">:</span> <span class="s2">&quot;foobar&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The response subsection is typically optional. Add it if you need to check something other than the defaults. The default status_code is 200. The block causes the framework to verify that the response received after making the HTTP request (as
+defined by the &#8216;request&#8217; section) matches the values specified. If it does not, a failure is reported.</p>
+</div>
+<div class="section" id="primary-elements">
+<h2>Primary Elements<a class="headerlink" href="#primary-elements" title="Permalink to this headline">¶</a></h2>
+<p>There are 4 main primary subsections in a test:</p>
+<ol class="arabic simple">
+<li>startup</li>
+<li>main</li>
+<li>confirm</li>
+<li>teardown</li>
+</ol>
+<p>A startup section is a list of main/confirm subsections. These are run in order before any test. The idea is to do any
+setup like functionality in these blocks. It is always optional.</p>
+<p>A main subsection details the api being tested. It is the only required subsection in any test.</p>
+<p>A confirm subsection typically is an api call to confirm that the api being tested actually did the work. e.g. if you are
+testing any api to add a user, a confirm subsection could do a GET on that user to ensure that the user was actually added.
+It is always optional.</p>
+<p>A teardown is run at the end of each test. It is to perform any possible cleanup action you may have. it is always optional.</p>
+</div>
 <div class="section" id="overall-structure">
 <h2>Overall Structure<a class="headerlink" href="#overall-structure" title="Permalink to this headline">¶</a></h2>
 <p>The tapi.json file has the following overall structure:</p>
@@ -67,8 +132,6 @@ like. (Optionally specifying some confirmation steps as well)</p>
   <span class="s2">&quot;on_failure&quot;</span><span class="o">:</span> <span class="s2">&quot;continue&quot;</span><span class="p">,</span>
   <span class="s2">&quot;startup_harness&quot;</span><span class="o">:</span> <span class="p">[...],</span>
   <span class="s2">&quot;teardown_harness&quot;</span><span class="o">:</span> <span class="p">[...],</span>
-  <span class="s2">&quot;startup&quot;</span><span class="o">:</span> <span class="p">[...],</span>
-  <span class="s2">&quot;teardown&quot;</span><span class="o">:</span> <span class="p">[...],</span>
   <span class="s2">&quot;tests&quot;</span><span class="o">:</span> <span class="p">[...]</span>
 <span class="p">}</span>
 </pre></div>
@@ -127,18 +190,6 @@ like. (Optionally specifying some confirmation steps as well)</p>
 <td>No</td>
 <td>actions to perform after the test run</td>
 </tr>
-<tr class="row-even"><td>startup</td>
-<td>list</td>
-<td>[]</td>
-<td>No</td>
-<td>actions to perform before <strong>each</strong> test runs</td>
-</tr>
-<tr class="row-odd"><td>teardown</td>
-<td>list</td>
-<td>[]</td>
-<td>No</td>
-<td>actions to perform after <strong>each</strong> test runs</td>
-</tr>
 <tr class="row-even"><td>tests</td>
 <td>list</td>
 <td>[]</td>
@@ -152,15 +203,17 @@ like. (Optionally specifying some confirmation steps as well)</p>
 <h3>ROOT:common<a class="headerlink" href="#root-common" title="Permalink to this headline">¶</a></h3>
 <p>This element contains all the request params that will be common to all requests made by Tapi. It can also contain a response section that can contain all data that needs to be validated. Here is a sample:</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
-    <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;accept-encoding&quot;</span><span class="o">:</span> <span class="s2">&quot;compress, gzip&quot;</span>
+    <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;accept-encoding&quot;</span><span class="o">:</span> <span class="s2">&quot;compress, gzip&quot;</span>
+            <span class="p">}</span>
         <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
-        <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;content-type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span>
+        <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+            <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;content-type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span>
+            <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -174,20 +227,26 @@ like. (Optionally specifying some confirmation steps as well)</p>
 </div>
 <div class="section" id="root-startup-harness">
 <h3>ROOT:startup_harness<a class="headerlink" href="#root-startup-harness" title="Permalink to this headline">¶</a></h3>
-<p>These are API calls that are made before the test run. It&#8217;s essentialy a list of &#8216;ROOT:common&#8217; sections. It&#8217;s called only once during the entire run at the beginning. A sample harness is as follows:</p>
+<p>These are API calls that are made before the test run. It&#8217;s called only once during the entire run at the beginning. A sample harness is as follows:</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">[{</span>
-    <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com/init1&quot;</span>
+    <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com/init1&quot;</span>
+        <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">},</span>
 <span class="p">{</span>
-    <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com/init2&quot;</span>
+    <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com/init2&quot;</span>
+        <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">},</span>
 <span class="p">{</span>
-    <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com/init3&quot;</span>
+    <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com/init3&quot;</span>
+        <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="p">]</span>
@@ -199,18 +258,24 @@ like. (Optionally specifying some confirmation steps as well)</p>
 <h3>ROOT:teardown_harness<a class="headerlink" href="#root-teardown-harness" title="Permalink to this headline">¶</a></h3>
 <p>These are API calls that are made after all tests run. It&#8217;s essentialy a list of &#8216;ROOT:common&#8217; sections. It&#8217;s called only once during the entire run at the end. A sample harness is as follows:</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="p">[{</span>
-    <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com/cleanup1&quot;</span>
+    <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com/cleanup1&quot;</span>
+        <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">},</span>
 <span class="p">{</span>
-    <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com/cleanup2&quot;</span>
+    <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com/cleanup2&quot;</span>
+        <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">},</span>
 <span class="p">{</span>
-    <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com/cleanup3&quot;</span>
+    <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com/cleanup3&quot;</span>
+        <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="p">]</span>
@@ -226,45 +291,53 @@ like. (Optionally specifying some confirmation steps as well)</p>
     <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;new_user&quot;</span><span class="p">,</span>
     <span class="s2">&quot;startup&quot;</span><span class="o">:</span> <span class="p">[</span>
         <span class="p">{</span>
-            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/startup&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span>
+            <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/startup&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span>
+                <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">],</span>
-    <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-      <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/endpoint&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="s2">&quot;20&quot;</span>
-      <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span><span class="p">,</span>
-        <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;auth-token&quot;</span><span class="o">:</span> <span class="s2">&quot;*&quot;</span>
-        <span class="p">}</span>
-        <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;$.name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span>
+    <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/endpoint&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="s2">&quot;20&quot;</span>
+          <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span><span class="p">,</span>
+            <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;auth-token&quot;</span><span class="o">:</span> <span class="s2">&quot;*&quot;</span>
+            <span class="p">}</span>
+            <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;$.name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span>
+            <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">},</span>
     <span class="s2">&quot;confirm&quot;</span><span class="o">:</span> <span class="p">{</span>
-      <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/endpoint/[[self._.response.body.name]]&quot;</span>
-      <span class="p">},</span>
-      <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="p">{</span>
-          <span class="s2">&quot;$.name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;$.age&quot;</span><span class="o">:</span> <span class="s2">&quot;20&quot;</span>
+        <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/endpoint/[[self._.response.body.name]]&quot;</span>
+              <span class="p">},</span>
+              <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="p">{</span>
+                  <span class="s2">&quot;$.name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;$.age&quot;</span><span class="o">:</span> <span class="s2">&quot;20&quot;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
         <span class="p">}</span>
-      <span class="p">}</span>
     <span class="p">},</span>
     <span class="s2">&quot;teardown&quot;</span><span class="o">:</span> <span class="p">[</span>
         <span class="p">{</span>
-            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/teardown&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span>
+            <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/teardown&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span>
+                <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">]</span>
@@ -300,10 +373,7 @@ like. (Optionally specifying some confirmation steps as well)</p>
 <td>string</td>
 <td>None</td>
 <td>No</td>
-<td colspan="2">unique id to identify this test. later tests may use this id as a key into
-a dict whose value is the particular test details like request/response etc.
-e.g. if a test id is &#8216;foobar&#8217;, a later test may reference it&#8217;s request parameters like
-this: self.foobar.request.url or self.foobar.request.payload.key</td>
+<td colspan="2">unique id to identify this test.</td>
 </tr>
 <tr class="row-even"><td>startup</td>
 <td>list</td>
@@ -325,7 +395,8 @@ this: self.foobar.request.url or self.foobar.request.payload.key</td>
 <p>url - url to test (Required)</p>
 <p>verb - HTTP verb (defaults to GET) (Optional)</p>
 <p>headers - dict of header key/value pairs (Optional)</p>
-<p class="last">payload - dict of header key/value pairs (Optional)</p>
+<p class="last">payload - dict of key/value pairs or a string (Optional). If a dict is given, it will
+be url-encoded. If string, it will be used as is.</p>
 </td>
 </tr>
 <tr class="row-odd"><td>response</td>
@@ -353,19 +424,88 @@ user was indeed added.</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Note</strong>:</p>
-<ol class="arabic simple">
-<li>It is the responsibility of the author to ensure that ids across all tests are unique. Else the json file will be rejected.</li>
-<li>When matching headers, if the value is &#8216;*&#8217;, then it merely checks for the existence of the header key, and any value is ok. This is used in places where the value is probably generated by the server on the fly, e.g. auth tokens.</li>
-<li>When matching headers, the value is interpreted as a python regular expression pattern to match with the response received.</li>
-</ol>
 </div>
 </div>
-<div class="section" id="field-inheritance">
-<h2>Field Inheritance<a class="headerlink" href="#field-inheritance" title="Permalink to this headline">¶</a></h2>
-<p>One main idea behind the json format is that each test &#8216;inherits&#8217; all parameters from it&#8217;s parent. e.g. we can specify
-a &#8216;base_url&#8217; field in the ROOT of the json structure and then override it within a test. Similarly, you can set a global
-&#8216;on_failure&#8217; policy of continue|abort and then override it within the body of the individual test.</p>
+<div class="section" id="tapi-expressions">
+<h2>Tapi Expressions<a class="headerlink" href="#tapi-expressions" title="Permalink to this headline">¶</a></h2>
+<p>In so happens sometimes that the values of fields need to be computed and are not readily available. e.g. we may want
+to add an &#8216;authorization&#8217; header with has the sha256 hash of the username:password or something similar. In order to facilitate
+such situations, you can use Script Tapi Expressions. These are essentially python scripts that take some parameters and output a result.</p>
+<p>There are three types of Script Tapi Expressions, one for requests, one for responses and one for tokens. The one for requests always returns a value which is used in the HTTP request. The script for response is one that takes some args and always returns True/False i.e. telling us if the response matched the spec or not.</p>
+<p>A sample request tapi expression is like:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://www.api.example.com&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;some_id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;authorization&quot;</span><span class="o">:</span> <span class="s2">&quot;[[script:request_some_id_authorization.py]]&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="s2">&quot;[[script:request_some_id_payload.py]]&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The framework will then look for the script request_some_id_authorization.py/request_some_id_payload.py in the same directory and execute it. The return value of the script is then used when making the HTTP request.</p>
+<p>The request scripts should have this general form:</p>
+<p>class RequestRunner(object):</p>
+<blockquote>
+<div><p>&#64;classmethod
+def get_value(cls, test_output_so_far, config_data):</p>
+<blockquote>
+<div><p>#do whatever you need here...</p>
+<p>return &#8216;some value&#8217;</p>
+</div></blockquote>
+</div></blockquote>
+<p>The framework will import RequestRunner and calls method get_value. The argument test_output_so_far is a dict of the test
+request/response results of any previous subsections so far e.g. startup, main subsections etc. The config_data is the json
+config of the test under consideration. Thus this function has all the info it needs and it can do whatever logic it wants to do
+and finally return a result to be used as a value in the HTTP request.</p>
+<p>Similarly the response tapi script has the form:</p>
+<p>class ResponseRunner(object):</p>
+<blockquote>
+<div><p>&#64;classmethod
+def validate(cls, test_output_so_far, test_config_data, response):</p>
+<blockquote>
+<div>return len(json.loads(response)) == 2</div></blockquote>
+</div></blockquote>
+<p>The framework will import ResponseRunner and call method validate. Args provided include the HTTP response object. The script
+can then do any calculation it neds and finally return a True/False answer.</p>
+<p>Sometimes, we would also like to access the value of a previously calculated header in future subsections. e.g. the first time
+you login, if you get a auth-token. And later in every subsequent API call, you need to specify that auth-token, you can use a token tapi expression:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://www.api.example.com/login&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;some_id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;username&quot;</span><span class="o">:</span> <span class="s2">&quot;foo&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;password&quot;</span><span class="o">:</span> <span class="s2">&quot;bar&quot;</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;auth-token&quot;</span><span class="o">:</span> <span class="s2">&quot;*&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;confirm&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://www.api.example.com/dashboard&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;auth-token&quot;</span><span class="o">:</span> <span class="s2">&quot;[[token:main.response.headers.auth-token]]&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The [[token:main.response.headers.auth-token]] tells the framework that the auth-token value should be the same as in the
+response header from the initial request. Note the asterix in the first api response. This tells the tapi frameworj to only
+check for the existence of the key, any value returned by the server is ok.</p>
 </div>
 </div>
 
@@ -378,6 +518,8 @@ a &#8216;base_url&#8217; field in the ROOT of the json structure and then overri
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">User Guide</a><ul>
+<li><a class="reference internal" href="#fundamentals">Fundamentals</a></li>
+<li><a class="reference internal" href="#primary-elements">Primary Elements</a></li>
 <li><a class="reference internal" href="#overall-structure">Overall Structure</a><ul>
 <li><a class="reference internal" href="#root-common">ROOT:common</a></li>
 <li><a class="reference internal" href="#root-on-failure">ROOT:on_failure</a></li>
@@ -386,7 +528,7 @@ a &#8216;base_url&#8217; field in the ROOT of the json structure and then overri
 <li><a class="reference internal" href="#root-tests">ROOT:tests</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#field-inheritance">Field Inheritance</a></li>
+<li><a class="reference internal" href="#tapi-expressions">Tapi Expressions</a></li>
 </ul>
 </li>
 </ul>

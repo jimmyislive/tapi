@@ -560,7 +560,7 @@ Advanced5
         "on_failure": "abort",
         "startup_harness": [{
             "request": {
-                "url": "/init",
+                "url": "/init"
             }
         }],
         "teardown_harness": [{
@@ -574,7 +574,7 @@ Advanced5
                     "url": "/start_timer"
                 }
             }
-        ]
+        ],
         "teardown": [
             {
                 "request": {
@@ -598,7 +598,7 @@ Advanced5
                         "auth-token": "*"
                     }
                 }
-            }
+            },
             {   "id": "postuser",
                 "request": {
                     "url": "/users",
@@ -615,7 +615,7 @@ Advanced5
                 "response": {
                     "status_code": 201,
                     "body": "[[script:response_postuser_body]]"
-                }
+                },
                 "confirm": {
                     "request": {
                         "url": "/users/bob",
@@ -646,7 +646,7 @@ Advanced5
                 },
                 "response": {
                     "status_code": 201
-                }
+                },
                 "confirm": {
                     "request": {
                         "url": "/users/jane",
