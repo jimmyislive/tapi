@@ -673,6 +673,8 @@ class Tapi(object):
 def parse_and_run(config_file, test_ids, only_verify_flag=False):
     """Parses out the diferrent sections of the config file"""
 
+    sys.path.append(os.path.dirname(os.path.realpath(config_file)))
+
     with open(config_file, 'r') as fp:
         try:
             config_data = json.load(fp)

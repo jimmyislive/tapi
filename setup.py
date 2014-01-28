@@ -21,14 +21,17 @@ setup(
     platforms='any',
     classifiers = [
         'Programming Language :: Python',
-        'Development Status :: 1 - Beta',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.3',
+        'Development Status :: 4 - Beta',
         'Natural Language :: English',
         'Environment :: Web Environment',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: MIT',
+        'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
         'Topic :: Software Development :: Libraries :: Application Frameworks',
-        'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
+        'Topic :: Software Development :: Testing'
         ],
 
     # metadata for upload to PyPI

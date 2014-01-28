@@ -352,7 +352,7 @@ A sample request tapi expression is like:
         }
     }
 
-The framework will then look for the script request_some_id_authorization.py/request_some_id_payload.py in the same directory and execute it. The return value of the script is then used when making the HTTP request.
+The framework will then look for the script request_some_id_authorization.py/request_some_id_payload.py in the same directory as the tapi.json (or whatever you have named your config as) and execute it. The return value of the script is then used when making the HTTP request.
 
 The request scripts should have this general form:
 
