@@ -115,25 +115,29 @@ Intermediate1
         "heading": "simple4 example",
         "base_url": "http://api.example.com",
         "common": {
-            "response": {
-              "status_code": 200,
-              "headers": { 
-                "content-type": "application/json"
-              }
+            "main": {
+                "response": {
+                  "status_code": 200,
+                  "headers": { 
+                    "content-type": "application/json"
+                  }
+                }
             }
         },
         "on_failure": "abort",
         "tests": [{
-            "request": {
-                "url": "/users/bob",
-                "verb": "get",
-                "headers": {
-                    "accept-encoding": "compress, gzip"
-                }
-            },
-            "response": {
-                "body": {
-                    "$.name": "bob"
+            "main": {
+                "request": {
+                    "url": "/users/bob",
+                    "verb": "get",
+                    "headers": {
+                        "accept-encoding": "compress, gzip"
+                    }
+                },
+                "response": {
+                    "body": {
+                        "$.name": "bob"
+                    }
                 }
             }
         }]
@@ -150,35 +154,43 @@ Intermediate2
         "heading": "simple4 example",
         "base_url": "http://api.example.com",
         "common": {
-            "response": {
-              "status_code": 200,
-              "headers": { 
-                "content-type": "application/json"
-              }
+            "main": {
+                "response": {
+                  "status_code": 200,
+                  "headers": { 
+                    "content-type": "application/json"
+                  }
+                }
             }
         },
         "on_failure": "abort",
         "startup_harness": [{
-            "request": {
-                "url": "/init",
+            "main": {
+                "request": {
+                    "url": "/init"
+                }
             }
         }],
         "teardown_harness": [{
-            "request": {
-                "url": "/cleanup"
+            "main": {
+                "request": {
+                    "url": "/cleanup"
+                }
             }
         }],
         "tests": [{
-            "request": {
-                "url": "/users/bob",
-                "verb": "get",
-                "headers": {
-                    "accept-encoding": "compress, gzip"
-                }
-            },
-            "response": {
-                "body": {
-                    "$.name": "bob"
+            "main": {
+                "request": {
+                    "url": "/users/bob",
+                    "verb": "get",
+                    "headers": {
+                        "accept-encoding": "compress, gzip"
+                    }
+                },
+                "response": {
+                    "body": {
+                        "$.name": "bob"
+                    }
                 }
             }
         }]
@@ -197,36 +209,46 @@ Advanced1
         "heading": "simple4 example",
         "base_url": "http://api.example.com",
         "common": {
-            "response": {
-              "status_code": 200,
-              "headers": { 
-                "content-type": "application/json"
-              }
+            "main": {
+                "response": {
+                  "status_code": 200,
+                  "headers": { 
+                    "content-type": "application/json"
+                  }
+                }
             }
         },
         "on_failure": "abort",
         "startup_harness": [{
-            "request": {
-                "url": "/init",
+            "main": {
+                "request": {
+                    "url": "/init"
+                }
             }
+            
         }],
         "teardown_harness": [{
-            "request": {
-                "url": "/cleanup"
+            "main": {
+                "request": {
+                    "url": "/cleanup"
+                }
             }
         }],
         "tests": [
-            { "request": {
-                    "url": "/users",
-                    "verb": "post",
-                    "payload": {
-                        "name": "bob",
-                        "age": 20
+            { 
+                "main": {
+                    "request": {
+                        "url": "/users",
+                        "verb": "post",
+                        "payload": {
+                            "name": "bob",
+                            "age": 20
+                        }
+                    },
+                    "response": {
+                        "status_code": 201
                     }
                 },
-                "response": {
-                    "status_code": 201
-                }
                 "confirm": {
                     "request": {
                         "url": "/users/bob",
@@ -244,7 +266,7 @@ Advanced1
             }]
     }
 
-This example runs a test that has all three critical parts: request, response, confirmation. It posts data to the /users endpoint, verifies that the response is OK and then confirms that the API did indeed do what it said it was going to do by GETing the newly created resource.
+This example runs a test that has two critical parts: main and confirm. It posts data to the /users endpoint, verifies that the response is OK and then confirms that the API did indeed do what it said it was going to do by GETing the newly created resource.
 
 .. _Advanced2:
 
@@ -257,36 +279,45 @@ Advanced2
         "heading": "simple4 example",
         "base_url": "http://api.example.com",
         "common": {
-            "response": {
-              "status_code": 200,
-              "headers": { 
-                "content-type": "application/json"
-              }
+            "main": {
+                "response": {
+                  "status_code": 200,
+                  "headers": { 
+                    "content-type": "application/json"
+                  }
+                }
             }
         },
         "on_failure": "abort",
         "startup_harness": [{
-            "request": {
-                "url": "/init",
+            "main": {
+                "request": {
+                    "url": "/init"
+                }
             }
         }],
         "teardown_harness": [{
-            "request": {
-                "url": "/cleanup"
+            "main": {
+                "request": {
+                    "url": "/cleanup"
+                }
             }
         }],
         "tests": [
-            { "request": {
-                    "url": "/users",
-                    "verb": "post",
-                    "payload": {
-                        "name": "bob",
-                        "age": 20
+            { 
+                "main": {
+                    "request": {
+                        "url": "/users",
+                        "verb": "post",
+                        "payload": {
+                            "name": "bob",
+                            "age": 20
+                        }
+                    },
+                    "response": {
+                        "status_code": 201
                     }
                 },
-                "response": {
-                    "status_code": 201
-                }
                 "confirm": {
                     "request": {
                         "url": "/users/bob",
@@ -303,17 +334,20 @@ Advanced2
                 }
             },
 
-            { "request": {
-                    "url": "/users",
-                    "verb": "post",
-                    "payload": {
-                        "name": "jane",
-                        "age": 30
+            { 
+                "main": {
+                    "request": {
+                        "url": "/users",
+                        "verb": "post",
+                        "payload": {
+                            "name": "jane",
+                            "age": 30
+                        }
+                    },
+                    "response": {
+                        "status_code": 201
                     }
                 },
-                "response": {
-                    "status_code": 201
-                }
                 "confirm": {
                     "request": {
                         "url": "/users/jane",
@@ -344,50 +378,63 @@ Advanced3
         "heading": "simple4 example",
         "base_url": "http://api.example.com",
         "common": {
-            "response": {
-              "status_code": 200,
-              "headers": { 
-                "content-type": "application/json"
-              }
+            "main": {
+                "response": {
+                  "status_code": 200,
+                  "headers": { 
+                    "content-type": "application/json"
+                  }
+                }
             }
         },
         "on_failure": "abort",
         "startup_harness": [{
-            "request": {
-                "url": "/init",
+            "main": {
+                "request": {
+                    "url": "/init"
+                }
             }
         }],
         "teardown_harness": [{
-            "request": {
-                "url": "/cleanup"
+            "main": {
+                "request": {
+                    "url": "/cleanup"
+                }
             }
         }],
         "startup": [
             {
-                "request": {
-                    "url": "/start_timer"
+                "main": {
+                    "request": {
+                        "url": "/start_timer"
+                    }
                 }
             }
-        ]
+        ],
         "teardown": [
             {
-                "request": {
-                    "url": "/end_timer"
+                "main": {
+                    "request": {
+                        "url": "/end_timer"
+                    }
                 }
             }
         ],
         "tests": [
-            { "request": {
-                    "url": "/users",
-                    "verb": "post",
-                    "payload": {
-                        "name": "bob",
-                        "age": 20
+            { 
+                "main": {
+                    "request": {
+                        "url": "/users",
+                        "verb": "post",
+                        "payload": {
+                            "name": "bob",
+                            "age": 20
+                        }
+                    },
+                    "response": {
+                        "status_code": 201
                     }
                 },
-                "response": {
-                    "status_code": 201
-                }
                 "confirm": {
                     "request": {
                         "url": "/users/bob",
@@ -404,17 +451,20 @@ Advanced3
                 }
             },
 
-            { "request": {
-                    "url": "/users",
-                    "verb": "post",
-                    "payload": {
-                        "name": "jane",
-                        "age": 30
+            { 
+                "main": {
+                    "request": {
+                        "url": "/users",
+                        "verb": "post",
+                        "payload": {
+                            "name": "jane",
+                            "age": 30
+                        }
+                    },
+                    "response": {
+                        "status_code": 201
                     }
                 },
-                "response": {
-                    "status_code": 201
-                }
                 "confirm": {
                     "request": {
                         "url": "/users/jane",
@@ -444,50 +494,63 @@ Advanced4
         "heading": "simple4 example",
         "base_url": "http://api.example.com",
         "common": {
-            "response": {
-              "status_code": 200,
-              "headers": { 
-                "content-type": "application/json"
-              }
+            "main": {
+                "response": {
+                  "status_code": 200,
+                  "headers": { 
+                    "content-type": "application/json"
+                  }
+                }
             }
         },
         "on_failure": "abort",
         "startup_harness": [{
-            "request": {
-                "url": "/init",
+            "main": {
+                "request": {
+                    "url": "/init"
+                }
             }
         }],
         "teardown_harness": [{
-            "request": {
-                "url": "/cleanup"
+            "main": {
+                "request": {
+                    "url": "/cleanup"
+                }
             }
         }],
         "startup": [
             {
-                "request": {
-                    "url": "/start_timer"
+                "main": {
+                    "request": {
+                        "url": "/start_timer"
+                    }
                 }
             }
-        ]
+        ],
         "teardown": [
             {
-                "request": {
-                    "url": "/end_timer"
+                "main": {
+                    "request": {
+                        "url": "/end_timer"
+                    }
                 }
             }
         ],
         "tests": [
-            { "request": {
-                    "url": "/users",
-                    "verb": "post",
-                    "payload": {
-                        "name": "bob",
-                        "age": 20
+            { 
+                "main": {
+                    "request": {
+                        "url": "/users",
+                        "verb": "post",
+                        "payload": {
+                            "name": "bob",
+                            "age": 20
+                        }
+                    },
+                    "response": {
+                        "status_code": 201
                     }
                 },
-                "response": {
-                    "status_code": 201
-                }
                 "confirm": {
                     "request": {
                         "url": "/users/bob",
@@ -504,17 +567,20 @@ Advanced4
                 }
             },
 
-            { "request": {
-                    "url": "/users",
-                    "verb": "post",
-                    "payload": {
-                        "name": "jane",
-                        "age": 30
+            { 
+                "main": {
+                    "request": {
+                        "url": "/users",
+                        "verb": "post",
+                        "payload": {
+                            "name": "jane",
+                            "age": 30
+                        }
+                    },
+                    "response": {
+                        "status_code": 201
                     }
                 },
-                "response": {
-                    "status_code": 201
-                }
                 "confirm": {
                     "request": {
                         "url": "/users/jane",
@@ -531,15 +597,19 @@ Advanced4
                 },
                 "startup": [
                     {
-                        "request": {
-                            "url": "/start_jane_timer"
+                        "main": {
+                            "request": {
+                                "url": "/start_jane_timer"
+                            }
                         }
                     }
                 ],
                 "teardown": [
                     {
-                        "request": {
-                            "url": "/stop_jane_timer"
+                        "main": {
+                            "request": {
+                                "url": "/stop_jane_timer"
+                            }
                         }
                     }
                 ]
@@ -558,71 +628,88 @@ Advanced5
         "heading": "simple4 example",
         "base_url": "http://api.example.com",
         "common": {
-            "response": {
-              "status_code": 200,
-              "headers": { 
-                "content-type": "application/json"
-              }
+            "main": {
+                "response": {
+                  "status_code": 200,
+                  "headers": { 
+                    "content-type": "application/json"
+                  }
+                }
             }
         },
         "on_failure": "abort",
         "startup_harness": [{
-            "request": {
-                "url": "/init"
+            "main": {
+                "request": {
+                    "url": "/init"
+                }
             }
         }],
         "teardown_harness": [{
-            "request": {
-                "url": "/cleanup"
+            "main": {
+                "request": {
+                    "url": "/cleanup"
+                }
             }
         }],
         "startup": [
             {
-                "request": {
-                    "url": "/start_timer"
+                "main": {
+                    "request": {
+                        "url": "/start_timer"
+                    }
                 }
             }
         ],
         "teardown": [
             {
-                "request": {
-                    "url": "/end_timer"
+                "main": {
+                    "request": {
+                        "url": "/end_timer"
+                    }
                 }
             }
         ],
-        "tests": [ {
-                "id": "login",
-                "request": {
-                    "url": "/login",
-                    "verb": "post",
-                    "payload": {
-                        "name": "[[$USERNAME]]",
-                        "password": "[[$PASSWORD]]"
+        "tests": [ 
+            {   
+                "id": "postuser",
+                "startup": [
+                    {
+                        "main": {
+                            "request": {
+                                "url": "/login",
+                                "verb": "post",
+                                "payload": {
+                                    "name": "[[env:$USERNAME]]",
+                                    "password": "[[env:$PASSWORD]]"
+                                }
+                            },
+                            "response": {
+                                "status_code": 200,
+                                "headers": {
+                                    "auth-token": "*"
+                                }
+                            }
+                        }
                     }
-                },
-                "response": {
-                    "status_code": 200,
-                    "headers": {
-                        "auth-token": "*"
-                    }
-                }
-            },
-            {   "id": "postuser",
-                "request": {
-                    "url": "/users",
-                    "verb": "post",
-                    "payload": {
-                        "name": "bob",
-                        "age": 20,
-                        "bank": "[[script:request_postuser_bank]]"
+                ],
+                "main": {
+                    "request": {
+                        "url": "/users",
+                        "verb": "post",
+                        "payload": {
+                            "name": "bob",
+                            "age": 20,
+                            "bank": "[[script:request_postuser_bank.py]]"
+                        },
+                        "headers": {
+                            "auth-token": "[[token:startup[0].main.response.headers.auth-token]]"
+                        }
                     },
-                    "headers": {
-                        "auth-token": "[[self.login.response.headers.auth-token]]"
+                    "response": {
+                        "status_code": 201,
+                        "body": "[[script:response_postuser_body.py]]"
                     }
-                },
-                "response": {
-                    "status_code": 201,
-                    "body": "[[script:response_postuser_body]]"
                 },
                 "confirm": {
                     "request": {
@@ -630,7 +717,7 @@ Advanced5
                         "verb": "get",
                         "headers": {
                             "accept-encoding": "compress, gzip",
-                            "auth-token": "[[self.login.response.headers.auth-token]]"
+                            "auth-token": "[[token:startup[0].main.response.headers.auth-token]]"
                         }
                     },
                     "response": {
@@ -639,56 +726,11 @@ Advanced5
                         }
                     }
                 }
-            },
-
-            { "request": {
-                    "url": "/users",
-                    "verb": "post",
-                    "payload": {
-                        "name": "jane",
-                        "age": 30
-                    },
-                    "headers": {
-                        "auth-token": "[[self.login.response.headers.auth-token]]"
-                    }
-                },
-                "response": {
-                    "status_code": 201
-                },
-                "confirm": {
-                    "request": {
-                        "url": "/users/jane",
-                        "verb": "get",
-                        "headers": {
-                            "accept-encoding": "compress, gzip",
-                            "auth-token": "[[self.login.response.headers.auth-token]]"
-                        }
-                    },
-                    "response": {
-                        "body": {
-                            "$.name": "jane"
-                        }
-                    }
-                },
-                "startup": [
-                    {
-                        "request": {
-                            "url": "/start_jane_timer"
-                        }
-                    }
-                ],
-                "teardown": [
-                    {
-                        "request": {
-                            "url": "/stop_jane_timer"
-                        }
-                    }
-                ]
             }
             ]
     }
 
-Similar to Advanced4_, but here we begin everything with a test to /login. Note that we also assigned that test an id. We ensured that the response header has 'auth-token' (but don't worry about it's content, hence the star). In later tests, we want to send in the same auth-token in every request and we do this by aceesing the original auth-token via the id of the login test i.e. self.login.response.headers.auth-token. (remember to enclose it in [[]]). Also notice the [[$USERNAME]]. This means that the value of the environment variable $USERNAME is used here. The final point to notice is the ability to run arbitrary python scripts to either get some input value or verify some response result e.g. "bank": "[[script:request_postuser_bank]]". This means that the bank input parameter will be populated with the output of the script request_postuser_bank.py. Similarly "body": "[[script:response_postuser_body]]" means that the script response_postuser_body.py will be called and it's output should be True/False to indicate if it passed the check. Both scripts will receive the current unit test parametes as a json input. The convention is to name the python script as [request|response]_<id>_<field>.py. This way it will be easy to identify which test/field this script pertains to.
+Similar to Advanced4_, but here we begin everything with a test to /login. Note that we also assigned that test an id. We ensured that the response header has 'auth-token' (but don't worry about it's content, hence the star). In later tests, we want to send in the same auth-token in every request and we do this by aceesing the original auth-token via the tapi expression i.e. startup[0].main.response.headers.auth-token. (remember to enclose it in [[]]). Also notice the [[env:$USERNAME]]. This means that the value of the environment variable $USERNAME is used here. The final point to notice is the ability to run arbitrary python scripts to either get some input value or verify some response result e.g. "bank": "[[script:request_postuser_bank.py]]". This means that the bank input parameter will be populated with the output of the script request_postuser_bank.py. Similarly "body": "[[script:response_postuser_body.py]]" means that the script response_postuser_body.py will be called and it's output should be True/False to indicate if it passed the check. Both scripts will receive the current unit test parametes as a json input. The convention is to name the python script as [request|response]_<id>_<field>.py. This way it will be easy to identify which test/field this script pertains to.
 
 
 

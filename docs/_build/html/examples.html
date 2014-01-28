@@ -149,25 +149,29 @@
     <span class="s2">&quot;heading&quot;</span><span class="o">:</span> <span class="s2">&quot;simple4 example&quot;</span><span class="p">,</span>
     <span class="s2">&quot;base_url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com&quot;</span><span class="p">,</span>
     <span class="s2">&quot;common&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
-          <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
-          <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;content-type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span>
-          <span class="p">}</span>
+        <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+              <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+              <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;content-type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span>
+              <span class="p">}</span>
+            <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">},</span>
     <span class="s2">&quot;on_failure&quot;</span><span class="o">:</span> <span class="s2">&quot;abort&quot;</span><span class="p">,</span>
     <span class="s2">&quot;tests&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users/bob&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;accept-encoding&quot;</span><span class="o">:</span> <span class="s2">&quot;compress, gzip&quot;</span>
-            <span class="p">}</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;$.name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span>
+        <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users/bob&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;accept-encoding&quot;</span><span class="o">:</span> <span class="s2">&quot;compress, gzip&quot;</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;$.name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span>
+                <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}]</span>
@@ -182,35 +186,43 @@
     <span class="s2">&quot;heading&quot;</span><span class="o">:</span> <span class="s2">&quot;simple4 example&quot;</span><span class="p">,</span>
     <span class="s2">&quot;base_url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com&quot;</span><span class="p">,</span>
     <span class="s2">&quot;common&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
-          <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
-          <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;content-type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span>
-          <span class="p">}</span>
+        <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+              <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+              <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;content-type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span>
+              <span class="p">}</span>
+            <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">},</span>
     <span class="s2">&quot;on_failure&quot;</span><span class="o">:</span> <span class="s2">&quot;abort&quot;</span><span class="p">,</span>
     <span class="s2">&quot;startup_harness&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/init&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/init&quot;</span>
+            <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}],</span>
     <span class="s2">&quot;teardown_harness&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/cleanup&quot;</span>
+        <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/cleanup&quot;</span>
+            <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}],</span>
     <span class="s2">&quot;tests&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users/bob&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;accept-encoding&quot;</span><span class="o">:</span> <span class="s2">&quot;compress, gzip&quot;</span>
-            <span class="p">}</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;$.name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span>
+        <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users/bob&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;accept-encoding&quot;</span><span class="o">:</span> <span class="s2">&quot;compress, gzip&quot;</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;$.name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span>
+                <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}]</span>
@@ -225,36 +237,46 @@
     <span class="s2">&quot;heading&quot;</span><span class="o">:</span> <span class="s2">&quot;simple4 example&quot;</span><span class="p">,</span>
     <span class="s2">&quot;base_url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com&quot;</span><span class="p">,</span>
     <span class="s2">&quot;common&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
-          <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
-          <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;content-type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span>
-          <span class="p">}</span>
+        <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+              <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+              <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;content-type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span>
+              <span class="p">}</span>
+            <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">},</span>
     <span class="s2">&quot;on_failure&quot;</span><span class="o">:</span> <span class="s2">&quot;abort&quot;</span><span class="p">,</span>
     <span class="s2">&quot;startup_harness&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/init&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/init&quot;</span>
+            <span class="p">}</span>
         <span class="p">}</span>
+
     <span class="p">}],</span>
     <span class="s2">&quot;teardown_harness&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/cleanup&quot;</span>
+        <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/cleanup&quot;</span>
+            <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}],</span>
     <span class="s2">&quot;tests&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span> <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="mi">20</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="mi">20</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span>
                 <span class="p">}</span>
             <span class="p">},</span>
-            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span>
-            <span class="p">}</span>
             <span class="s2">&quot;confirm&quot;</span><span class="o">:</span> <span class="p">{</span>
                 <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
                     <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users/bob&quot;</span><span class="p">,</span>
@@ -273,7 +295,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>This example runs a test that has all three critical parts: request, response, confirmation. It posts data to the /users endpoint, verifies that the response is OK and then confirms that the API did indeed do what it said it was going to do by GETing the newly created resource.</p>
+<p>This example runs a test that has two critical parts: main and confirm. It posts data to the /users endpoint, verifies that the response is OK and then confirms that the API did indeed do what it said it was going to do by GETing the newly created resource.</p>
 </div>
 <div class="section" id="advanced2">
 <span id="id5"></span><h2>Advanced2<a class="headerlink" href="#advanced2" title="Permalink to this headline">¶</a></h2>
@@ -281,36 +303,45 @@
     <span class="s2">&quot;heading&quot;</span><span class="o">:</span> <span class="s2">&quot;simple4 example&quot;</span><span class="p">,</span>
     <span class="s2">&quot;base_url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com&quot;</span><span class="p">,</span>
     <span class="s2">&quot;common&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
-          <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
-          <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;content-type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span>
-          <span class="p">}</span>
+        <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+              <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+              <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;content-type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span>
+              <span class="p">}</span>
+            <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">},</span>
     <span class="s2">&quot;on_failure&quot;</span><span class="o">:</span> <span class="s2">&quot;abort&quot;</span><span class="p">,</span>
     <span class="s2">&quot;startup_harness&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/init&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/init&quot;</span>
+            <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}],</span>
     <span class="s2">&quot;teardown_harness&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/cleanup&quot;</span>
+        <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/cleanup&quot;</span>
+            <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}],</span>
     <span class="s2">&quot;tests&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span> <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="mi">20</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="mi">20</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span>
                 <span class="p">}</span>
             <span class="p">},</span>
-            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span>
-            <span class="p">}</span>
             <span class="s2">&quot;confirm&quot;</span><span class="o">:</span> <span class="p">{</span>
                 <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
                     <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users/bob&quot;</span><span class="p">,</span>
@@ -327,17 +358,20 @@
             <span class="p">}</span>
         <span class="p">},</span>
 
-        <span class="p">{</span> <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;jane&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="mi">30</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;jane&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="mi">30</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span>
                 <span class="p">}</span>
             <span class="p">},</span>
-            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span>
-            <span class="p">}</span>
             <span class="s2">&quot;confirm&quot;</span><span class="o">:</span> <span class="p">{</span>
                 <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
                     <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users/jane&quot;</span><span class="p">,</span>
@@ -365,50 +399,63 @@
     <span class="s2">&quot;heading&quot;</span><span class="o">:</span> <span class="s2">&quot;simple4 example&quot;</span><span class="p">,</span>
     <span class="s2">&quot;base_url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com&quot;</span><span class="p">,</span>
     <span class="s2">&quot;common&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
-          <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
-          <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;content-type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span>
-          <span class="p">}</span>
+        <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+              <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+              <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;content-type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span>
+              <span class="p">}</span>
+            <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">},</span>
     <span class="s2">&quot;on_failure&quot;</span><span class="o">:</span> <span class="s2">&quot;abort&quot;</span><span class="p">,</span>
     <span class="s2">&quot;startup_harness&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/init&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/init&quot;</span>
+            <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}],</span>
     <span class="s2">&quot;teardown_harness&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/cleanup&quot;</span>
+        <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/cleanup&quot;</span>
+            <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}],</span>
     <span class="s2">&quot;startup&quot;</span><span class="o">:</span> <span class="p">[</span>
         <span class="p">{</span>
-            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/start_timer&quot;</span>
+            <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/start_timer&quot;</span>
+                <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
-    <span class="p">]</span>
+    <span class="p">],</span>
     <span class="s2">&quot;teardown&quot;</span><span class="o">:</span> <span class="p">[</span>
         <span class="p">{</span>
-            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/end_timer&quot;</span>
+            <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/end_timer&quot;</span>
+                <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">],</span>
     <span class="s2">&quot;tests&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span> <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="mi">20</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="mi">20</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span>
                 <span class="p">}</span>
             <span class="p">},</span>
-            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span>
-            <span class="p">}</span>
             <span class="s2">&quot;confirm&quot;</span><span class="o">:</span> <span class="p">{</span>
                 <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
                     <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users/bob&quot;</span><span class="p">,</span>
@@ -425,17 +472,20 @@
             <span class="p">}</span>
         <span class="p">},</span>
 
-        <span class="p">{</span> <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;jane&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="mi">30</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;jane&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="mi">30</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span>
                 <span class="p">}</span>
             <span class="p">},</span>
-            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span>
-            <span class="p">}</span>
             <span class="s2">&quot;confirm&quot;</span><span class="o">:</span> <span class="p">{</span>
                 <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
                     <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users/jane&quot;</span><span class="p">,</span>
@@ -463,50 +513,63 @@
     <span class="s2">&quot;heading&quot;</span><span class="o">:</span> <span class="s2">&quot;simple4 example&quot;</span><span class="p">,</span>
     <span class="s2">&quot;base_url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com&quot;</span><span class="p">,</span>
     <span class="s2">&quot;common&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
-          <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
-          <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;content-type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span>
-          <span class="p">}</span>
+        <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+              <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+              <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;content-type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span>
+              <span class="p">}</span>
+            <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">},</span>
     <span class="s2">&quot;on_failure&quot;</span><span class="o">:</span> <span class="s2">&quot;abort&quot;</span><span class="p">,</span>
     <span class="s2">&quot;startup_harness&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/init&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/init&quot;</span>
+            <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}],</span>
     <span class="s2">&quot;teardown_harness&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/cleanup&quot;</span>
+        <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/cleanup&quot;</span>
+            <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}],</span>
     <span class="s2">&quot;startup&quot;</span><span class="o">:</span> <span class="p">[</span>
         <span class="p">{</span>
-            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/start_timer&quot;</span>
+            <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/start_timer&quot;</span>
+                <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
-    <span class="p">]</span>
+    <span class="p">],</span>
     <span class="s2">&quot;teardown&quot;</span><span class="o">:</span> <span class="p">[</span>
         <span class="p">{</span>
-            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/end_timer&quot;</span>
+            <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/end_timer&quot;</span>
+                <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">],</span>
     <span class="s2">&quot;tests&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span> <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="mi">20</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="mi">20</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span>
                 <span class="p">}</span>
             <span class="p">},</span>
-            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span>
-            <span class="p">}</span>
             <span class="s2">&quot;confirm&quot;</span><span class="o">:</span> <span class="p">{</span>
                 <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
                     <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users/bob&quot;</span><span class="p">,</span>
@@ -523,17 +586,20 @@
             <span class="p">}</span>
         <span class="p">},</span>
 
-        <span class="p">{</span> <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;jane&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="mi">30</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;jane&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="mi">30</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span>
                 <span class="p">}</span>
             <span class="p">},</span>
-            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span>
-            <span class="p">}</span>
             <span class="s2">&quot;confirm&quot;</span><span class="o">:</span> <span class="p">{</span>
                 <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
                     <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users/jane&quot;</span><span class="p">,</span>
@@ -550,15 +616,19 @@
             <span class="p">},</span>
             <span class="s2">&quot;startup&quot;</span><span class="o">:</span> <span class="p">[</span>
                 <span class="p">{</span>
-                    <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-                        <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/start_jane_timer&quot;</span>
+                    <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/start_jane_timer&quot;</span>
+                        <span class="p">}</span>
                     <span class="p">}</span>
                 <span class="p">}</span>
             <span class="p">],</span>
             <span class="s2">&quot;teardown&quot;</span><span class="o">:</span> <span class="p">[</span>
                 <span class="p">{</span>
-                    <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-                        <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/stop_jane_timer&quot;</span>
+                    <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/stop_jane_timer&quot;</span>
+                        <span class="p">}</span>
                     <span class="p">}</span>
                 <span class="p">}</span>
             <span class="p">]</span>
@@ -575,71 +645,88 @@
     <span class="s2">&quot;heading&quot;</span><span class="o">:</span> <span class="s2">&quot;simple4 example&quot;</span><span class="p">,</span>
     <span class="s2">&quot;base_url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://api.example.com&quot;</span><span class="p">,</span>
     <span class="s2">&quot;common&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
-          <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
-          <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;content-type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span>
-          <span class="p">}</span>
+        <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+              <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+              <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;content-type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span>
+              <span class="p">}</span>
+            <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">},</span>
     <span class="s2">&quot;on_failure&quot;</span><span class="o">:</span> <span class="s2">&quot;abort&quot;</span><span class="p">,</span>
     <span class="s2">&quot;startup_harness&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/init&quot;</span>
+        <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/init&quot;</span>
+            <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}],</span>
     <span class="s2">&quot;teardown_harness&quot;</span><span class="o">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/cleanup&quot;</span>
+        <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/cleanup&quot;</span>
+            <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}],</span>
     <span class="s2">&quot;startup&quot;</span><span class="o">:</span> <span class="p">[</span>
         <span class="p">{</span>
-            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/start_timer&quot;</span>
+            <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/start_timer&quot;</span>
+                <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">],</span>
     <span class="s2">&quot;teardown&quot;</span><span class="o">:</span> <span class="p">[</span>
         <span class="p">{</span>
-            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/end_timer&quot;</span>
+            <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/end_timer&quot;</span>
+                <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">],</span>
-    <span class="s2">&quot;tests&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="p">{</span>
-            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;login&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/login&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;[[$USERNAME]]&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;password&quot;</span><span class="o">:</span> <span class="s2">&quot;[[$PASSWORD]]&quot;</span>
+    <span class="s2">&quot;tests&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;postuser&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;startup&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                            <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/login&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
+                                <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;[[env:$USERNAME]]&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;password&quot;</span><span class="o">:</span> <span class="s2">&quot;[[env:$PASSWORD]]&quot;</span>
+                            <span class="p">}</span>
+                        <span class="p">},</span>
+                        <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                            <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+                            <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                                <span class="s2">&quot;auth-token&quot;</span><span class="o">:</span> <span class="s2">&quot;*&quot;</span>
+                            <span class="p">}</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
                 <span class="p">}</span>
-            <span class="p">},</span>
-            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
-                <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;auth-token&quot;</span><span class="o">:</span> <span class="s2">&quot;*&quot;</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">},</span>
-        <span class="p">{</span>   <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;postuser&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="mi">20</span><span class="p">,</span>
-                    <span class="s2">&quot;bank&quot;</span><span class="o">:</span> <span class="s2">&quot;[[script:request_postuser_bank]]&quot;</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;main&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;bob&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="mi">20</span><span class="p">,</span>
+                        <span class="s2">&quot;bank&quot;</span><span class="o">:</span> <span class="s2">&quot;[[script:request_postuser_bank.py]]&quot;</span>
+                    <span class="p">},</span>
+                    <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;auth-token&quot;</span><span class="o">:</span> <span class="s2">&quot;[[token:startup[0].main.response.headers.auth-token]]&quot;</span>
+                    <span class="p">}</span>
                 <span class="p">},</span>
-                <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;auth-token&quot;</span><span class="o">:</span> <span class="s2">&quot;[[self.login.response.headers.auth-token]]&quot;</span>
+                <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span><span class="p">,</span>
+                    <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="s2">&quot;[[script:response_postuser_body.py]]&quot;</span>
                 <span class="p">}</span>
-            <span class="p">},</span>
-            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span><span class="p">,</span>
-                <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="s2">&quot;[[script:response_postuser_body]]&quot;</span>
             <span class="p">},</span>
             <span class="s2">&quot;confirm&quot;</span><span class="o">:</span> <span class="p">{</span>
                 <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
@@ -647,7 +734,7 @@
                     <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span>
                     <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
                         <span class="s2">&quot;accept-encoding&quot;</span><span class="o">:</span> <span class="s2">&quot;compress, gzip&quot;</span><span class="p">,</span>
-                        <span class="s2">&quot;auth-token&quot;</span><span class="o">:</span> <span class="s2">&quot;[[self.login.response.headers.auth-token]]&quot;</span>
+                        <span class="s2">&quot;auth-token&quot;</span><span class="o">:</span> <span class="s2">&quot;[[token:startup[0].main.response.headers.auth-token]]&quot;</span>
                     <span class="p">}</span>
                 <span class="p">},</span>
                 <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
@@ -656,57 +743,12 @@
                     <span class="p">}</span>
                 <span class="p">}</span>
             <span class="p">}</span>
-        <span class="p">},</span>
-
-        <span class="p">{</span> <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;payload&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;jane&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;age&quot;</span><span class="o">:</span> <span class="mi">30</span>
-                <span class="p">},</span>
-                <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;auth-token&quot;</span><span class="o">:</span> <span class="s2">&quot;[[self.login.response.headers.auth-token]]&quot;</span>
-                <span class="p">}</span>
-            <span class="p">},</span>
-            <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;status_code&quot;</span><span class="o">:</span> <span class="mi">201</span>
-            <span class="p">},</span>
-            <span class="s2">&quot;confirm&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/users/jane&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;verb&quot;</span><span class="o">:</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
-                        <span class="s2">&quot;accept-encoding&quot;</span><span class="o">:</span> <span class="s2">&quot;compress, gzip&quot;</span><span class="p">,</span>
-                        <span class="s2">&quot;auth-token&quot;</span><span class="o">:</span> <span class="s2">&quot;[[self.login.response.headers.auth-token]]&quot;</span>
-                    <span class="p">}</span>
-                <span class="p">},</span>
-                <span class="s2">&quot;response&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="p">{</span>
-                        <span class="s2">&quot;$.name&quot;</span><span class="o">:</span> <span class="s2">&quot;jane&quot;</span>
-                    <span class="p">}</span>
-                <span class="p">}</span>
-            <span class="p">},</span>
-            <span class="s2">&quot;startup&quot;</span><span class="o">:</span> <span class="p">[</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-                        <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/start_jane_timer&quot;</span>
-                    <span class="p">}</span>
-                <span class="p">}</span>
-            <span class="p">],</span>
-            <span class="s2">&quot;teardown&quot;</span><span class="o">:</span> <span class="p">[</span>
-                <span class="p">{</span>
-                    <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="p">{</span>
-                        <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;/stop_jane_timer&quot;</span>
-                    <span class="p">}</span>
-                <span class="p">}</span>
-            <span class="p">]</span>
         <span class="p">}</span>
         <span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Similar to <a class="reference internal" href="#advanced4">Advanced4</a>, but here we begin everything with a test to /login. Note that we also assigned that test an id. We ensured that the response header has &#8216;auth-token&#8217; (but don&#8217;t worry about it&#8217;s content, hence the star). In later tests, we want to send in the same auth-token in every request and we do this by aceesing the original auth-token via the id of the login test i.e. self.login.response.headers.auth-token. (remember to enclose it in [[]]). Also notice the [[$USERNAME]]. This means that the value of the environment variable $USERNAME is used here. The final point to notice is the ability to run arbitrary python scripts to either get some input value or verify some response result e.g. &#8220;bank&#8221;: &#8220;[[script:request_postuser_bank]]&#8221;. This means that the bank input parameter will be populated with the output of the script request_postuser_bank.py. Similarly &#8220;body&#8221;: &#8220;[[script:response_postuser_body]]&#8221; means that the script response_postuser_body.py will be called and it&#8217;s output should be True/False to indicate if it passed the check. Both scripts will receive the current unit test parametes as a json input. The convention is to name the python script as [request|response]_&lt;id&gt;_&lt;field&gt;.py. This way it will be easy to identify which test/field this script pertains to.</p>
+<p>Similar to <a class="reference internal" href="#advanced4">Advanced4</a>, but here we begin everything with a test to /login. Note that we also assigned that test an id. We ensured that the response header has &#8216;auth-token&#8217; (but don&#8217;t worry about it&#8217;s content, hence the star). In later tests, we want to send in the same auth-token in every request and we do this by aceesing the original auth-token via the tapi expression i.e. startup[0].main.response.headers.auth-token. (remember to enclose it in [[]]). Also notice the [[env:$USERNAME]]. This means that the value of the environment variable $USERNAME is used here. The final point to notice is the ability to run arbitrary python scripts to either get some input value or verify some response result e.g. &#8220;bank&#8221;: &#8220;[[script:request_postuser_bank.py]]&#8221;. This means that the bank input parameter will be populated with the output of the script request_postuser_bank.py. Similarly &#8220;body&#8221;: &#8220;[[script:response_postuser_body.py]]&#8221; means that the script response_postuser_body.py will be called and it&#8217;s output should be True/False to indicate if it passed the check. Both scripts will receive the current unit test parametes as a json input. The convention is to name the python script as [request|response]_&lt;id&gt;_&lt;field&gt;.py. This way it will be easy to identify which test/field this script pertains to.</p>
 </div>
 </div>
 

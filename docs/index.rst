@@ -13,6 +13,7 @@ Tapi is a tool to automate the testing of your Application Programmer Interfaces
    why
    features
    dependencies
+   installation
    quickstart
    userguide
    examples

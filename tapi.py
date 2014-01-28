@@ -88,7 +88,17 @@ class TapiExprEvaluator(object):
 
                 return value[:token_start_index] + token_value + value[token_end_index + 2:]
             else:
-                return ''
+                env_start_index = value.find('[[env:')
+                env_end_index = value.find(']]')
+
+                if env_start_index != -1 and env_end_index != -1:
+                    env_var = value[env_start_index + 7:env_end_index]
+                    try:
+                        return os.environ[env_var]
+                    except KeyError:
+                        return ''
+                else:
+                    return ''
 
     @classmethod
     def get_response_tapi_expr(cls, value, test_output_so_far, test_config_data, response):
@@ -236,10 +246,11 @@ class InputConfigValidator(object):
 
         for test in tests:
 
-            if test.has_key('id') and test['id'] in test_ids:
-                raise TapiConfigException('test ids have to be unique. {0} is repeated'.format(test['id']))
-            else:
-                test_ids.append(test['id'])
+            if test.has_key('id'):
+                if test['id'] in test_ids:
+                    raise TapiConfigException('test ids have to be unique. {0} is repeated'.format(test['id']))
+                else:
+                    test_ids.append(test['id'])
 
             if test.has_key('startup'):
                 cls.verify_startup(test['startup'])

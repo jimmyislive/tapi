@@ -422,6 +422,9 @@ The [[token:main.response.headers.auth-token]] tells the framework that the auth
 response header from the initial request. Note the asterix in the first api response. This tells the tapi framework to only
 check for the existence of the key, any value returned by the server is ok.
 
+Finally, you can also access environment vaiables by using a tapi expression like [[env:$USERNAME]] - this will be replaced
+by the value of the $USERNAME environment variable.
+
 
 
 
