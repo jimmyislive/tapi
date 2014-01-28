@@ -7,3 +7,4 @@ docutils==0.11
 wsgiref==0.1.2
 requests
 jsonpath-rw
+sphinx_rtd_theme
