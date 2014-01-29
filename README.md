@@ -1,4 +1,6 @@
 
+[![Build Status](https://travis-ci.org/jimmyislive/tapi.png?branch=master)](https://travis-ci.org/jimmyislive/tapi)
+
 # TAPI - Testing APIs
 
 Tapi is a framework for testing APIs
