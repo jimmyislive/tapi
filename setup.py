@@ -2,16 +2,13 @@ from setuptools import setup, find_packages
 
 setup(
     name = "Tapi",
-    version = "0.1",
+    version = "0.1.5",
     packages = find_packages(),
     scripts = ['tapi.py'],
 
     # Project uses reStructuredText, so ensure that the docutils get
     # installed or upgraded on the target machine
-    install_requires = ['docutils>=0.3',
-                        'requests>=0.13.9',
-                        'jsonpath-rw>=1.2.3'
-                        ],
+    install_requires = [],
 
     package_data = {
         # If any package contains *.txt or *.rst files, include them:

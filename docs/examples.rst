@@ -112,7 +112,7 @@ Intermediate1
 .. code-block:: javascript
 
     {
-        "heading": "simple4 example",
+        "heading": "intermediate1 example",
         "base_url": "http://api.example.com",
         "common": {
             "main": {
@@ -151,7 +151,7 @@ Intermediate2
 .. code-block:: javascript
 
     {
-        "heading": "simple4 example",
+        "heading": "intermediate2 example",
         "base_url": "http://api.example.com",
         "common": {
             "main": {
@@ -206,7 +206,7 @@ Advanced1
 .. code-block:: javascript
 
     {
-        "heading": "simple4 example",
+        "heading": "advanced1 example",
         "base_url": "http://api.example.com",
         "common": {
             "main": {
@@ -276,7 +276,7 @@ Advanced2
 .. code-block:: javascript
 
     {
-        "heading": "simple4 example",
+        "heading": "advanced2 example",
         "base_url": "http://api.example.com",
         "common": {
             "main": {
@@ -375,7 +375,7 @@ Advanced3
 .. code-block:: javascript
 
     {
-        "heading": "simple4 example",
+        "heading": "advanced3 example",
         "base_url": "http://api.example.com",
         "common": {
             "main": {
@@ -385,7 +385,25 @@ Advanced3
                     "content-type": "application/json"
                   }
                 }
-            }
+            },
+            "startup": [
+                {
+                    "main": {
+                        "request": {
+                            "url": "/start_timer"
+                        }
+                    }
+                }
+            ],
+            "teardown": [
+                {
+                    "main": {
+                        "request": {
+                            "url": "/end_timer"
+                        }
+                    }
+                }
+            ]
         },
         "on_failure": "abort",
         "startup_harness": [{
@@ -402,24 +420,6 @@ Advanced3
                 }
             }
         }],
-        "startup": [
-            {
-                "main": {
-                    "request": {
-                        "url": "/start_timer"
-                    }
-                }
-            }
-        ],
-        "teardown": [
-            {
-                "main": {
-                    "request": {
-                        "url": "/end_timer"
-                    }
-                }
-            }
-        ],
         "tests": [
             { 
                 "main": {
@@ -491,7 +491,7 @@ Advanced4
 .. code-block:: javascript
 
     {
-        "heading": "simple4 example",
+        "heading": "advanced4 example",
         "base_url": "http://api.example.com",
         "common": {
             "main": {
@@ -501,7 +501,25 @@ Advanced4
                     "content-type": "application/json"
                   }
                 }
-            }
+            },
+            "startup": [
+                {
+                    "main": {
+                        "request": {
+                            "url": "/start_timer"
+                        }
+                    }
+                }
+            ],
+            "teardown": [
+                {
+                    "main": {
+                        "request": {
+                            "url": "/end_timer"
+                        }
+                    }
+                }
+            ]
         },
         "on_failure": "abort",
         "startup_harness": [{
@@ -518,24 +536,6 @@ Advanced4
                 }
             }
         }],
-        "startup": [
-            {
-                "main": {
-                    "request": {
-                        "url": "/start_timer"
-                    }
-                }
-            }
-        ],
-        "teardown": [
-            {
-                "main": {
-                    "request": {
-                        "url": "/end_timer"
-                    }
-                }
-            }
-        ],
         "tests": [
             { 
                 "main": {
@@ -625,7 +625,7 @@ Advanced5
 .. code-block:: javascript
 
     {
-        "heading": "simple4 example",
+        "heading": "advanced5 example",
         "base_url": "http://api.example.com",
         "common": {
             "main": {
@@ -635,7 +635,25 @@ Advanced5
                     "content-type": "application/json"
                   }
                 }
-            }
+            },
+            "startup": [
+                {
+                    "main": {
+                        "request": {
+                            "url": "/start_timer"
+                        }
+                    }
+                }
+            ],
+            "teardown": [
+                {
+                    "main": {
+                        "request": {
+                            "url": "/end_timer"
+                        }
+                    }
+                }
+            ]
         },
         "on_failure": "abort",
         "startup_harness": [{
@@ -652,24 +670,6 @@ Advanced5
                 }
             }
         }],
-        "startup": [
-            {
-                "main": {
-                    "request": {
-                        "url": "/start_timer"
-                    }
-                }
-            }
-        ],
-        "teardown": [
-            {
-                "main": {
-                    "request": {
-                        "url": "/end_timer"
-                    }
-                }
-            }
-        ],
         "tests": [ 
             {   
                 "id": "postuser",

@@ -181,7 +181,8 @@ class InputConfigValidator(object):
             raise TapiConfigException('Startup harness has to be a list')
 
         for startup_harness in startup_harness_config:
-            return cls.verify_request_response(startup_harness)
+            for key in startup_harness.keys():
+                return cls.verify_request_response(startup_harness[key])
 
     @classmethod
     def verify_teardown_harness(cls, teardown_harness_config):
@@ -189,7 +190,8 @@ class InputConfigValidator(object):
             raise TapiConfigException('Teardown harness has to be a list')
 
         for teardown_harness in teardown_harness_config:
-            return cls.verify_request_response(teardown_harness)
+            for key in teardown_harness.keys():
+                return cls.verify_request_response(teardown_harness[key])
 
     @classmethod
     def verify_startup(cls, startup_config, is_common = False):

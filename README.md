@@ -54,6 +54,6 @@ No implementation as yet, details here: http://tapi.readthedocs.org/en/latest/#
 
 ## TODO
 
-1. Add unit tests
+1. Improve / Add more unit tests
 2. Ability to split tapi.json into multiple files
 
