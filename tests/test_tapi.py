@@ -3,7 +3,11 @@
 
 import json
 import os
+import sys
 import unittest
+
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
 from tapi import Tapi, TapiExprEvaluator
 
 __doc__ = """Unit tests for TAPI"""
