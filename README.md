@@ -43,7 +43,7 @@ In order to start using Tapi you have to write a tapi.json file. The simplest ta
 
 The above means the following:
 
-1. There is one test in this file named 'get all existing users'
+1. There is one test in this file
 2. The framework will make a GET (the default) request to the endpoint api.example.com/users
 3. The framework will verify that the return status code is 200 (default)
 
