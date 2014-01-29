@@ -52,8 +52,6 @@ You can run this test by doing:
 
 Thus, without writing a single line of code, you have successfully verfied that this endpoint works.
 
-No implementation as yet, details here: http://tapi.readthedocs.org/en/latest/#
-
 ## TODO
 
 1. Improve / Add more unit tests
