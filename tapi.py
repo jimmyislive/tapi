@@ -287,7 +287,7 @@ class OutputResponseValidator(object):
                 try:
                     if config_response_headers[k] == '*':
                         #we don't care what value the response header has, just the key needs to be there
-                        if response_headers.has_key(k):
+                        if response_headers.keys().count(k):
                             continue
                         else:
                             return False, 'Header {0} is not present in the response'.format(k)
