@@ -16,6 +16,7 @@ import os
 import random
 import sys
 import traceback
+import urllib
 import urlparse
 
 from jsonpath_rw import jsonpath, parse
@@ -32,8 +33,11 @@ class TapiExprEvaluator(object):
     @classmethod
     def is_tapi_expr(cls, value):
         """An expression is a tapi expression if it contains anything within double square brackets. [[...]]"""
-        value = value.strip()
-        return (value.find('[[') != -1 and value.find(']]') != -1)
+        if isinstance(value, basestring):
+            value = value.strip()
+            return (value.find('[[') != -1 and value.find(']]') != -1)
+        else:
+            return False
 
     @classmethod
     def is_jsonpath_expr(cls, value):
@@ -82,7 +86,7 @@ class TapiExprEvaluator(object):
                 pieces = dot_names.split('.')
 
                 token_value = cls._helper_get_expression_value(test_output_so_far, pieces[0])
-                
+
                 for piece in pieces[1:]:
                     token_value = cls._helper_get_expression_value(token_value, piece)
 
@@ -104,7 +108,7 @@ class TapiExprEvaluator(object):
     def get_response_tapi_expr(cls, value, test_output_so_far, test_config_data, response):
         """Allows us to execute arbitrary scripts to verify the output.
 
-        Note that the output in these scripts should always be True/False. i.e. is the response correct as per the 
+        Note that the output in these scripts should always be True/False. i.e. is the response correct as per the
         provided spec in the json file
         """
         value = value.strip()
@@ -436,7 +440,7 @@ class Tapi(object):
                 config_request_param = copy.deepcopy(self.common[run_subsection_name]['request'][key])
             except KeyError:
                 config_request_param = {}
-            
+
             if config_data['request'].has_key(key):
                 #e.g. headers
                 if type(config_data['request'][key]) == dict:
@@ -475,13 +479,14 @@ class Tapi(object):
         else:
             return None
 
-    def _build_base_test_output(self, requests_method, url, config_request_payload, config_request_headers, config_response_status_code):
+    def _build_base_test_output(self, requests_method, url, config_request_params, config_request_payload, config_request_headers, config_response_status_code):
         """Populate all request/response params so it can be referenced later"""
 
         output = {}
         output['request'] = {}
         output['request']['url'] = url
         output['request']['action'] = str(requests_method)
+        output['request']['params'] = config_request_params
         output['request']['payload'] = config_request_payload
         output['request']['headers'] = config_request_headers
         output['response'] = {}
@@ -502,6 +507,8 @@ class Tapi(object):
 
         if config_data:
 
+            #request params...
+            config_request_params = self._helper_get_request_cfg_val(run_subsection_name, test_output_so_far, config_data, 'params')
             #request payload...
             config_request_payload = self._helper_get_request_cfg_val(run_subsection_name, test_output_so_far, config_data, 'payload')
             #request headers...
@@ -528,7 +535,13 @@ class Tapi(object):
                 if self.base_url:
                     url = urlparse.urljoin(self.base_url, url)
 
-                response = requests_method(url, data=config_request_payload, headers=config_request_headers)
+
+                if config_request_params:
+                    params = urllib.urlencode(config_request_params)
+                    url = '{0}?{1}'.format(url, params)
+                    response = requests_method(url, headers=config_request_headers)
+                else:
+                    response = requests_method(url, data=config_request_payload, headers=config_request_headers)
 
                 #response status code
                 config_response_status_code = self._helper_get_response_cfg_val(run_subsection_name, config_data, 'status_code') or 200
@@ -538,7 +551,7 @@ class Tapi(object):
                 #response body...
                 config_response_body = self._helper_get_response_cfg_val(run_subsection_name, config_data, 'body') or {}
 
-                test_output = self._build_base_test_output(requests_method, url, config_request_payload, config_request_headers,
+                test_output = self._build_base_test_output(requests_method, url, config_request_params, config_request_payload, config_request_headers,
                               config_response_status_code)
 
                 test_output['response']['status_code'] = response.status_code
@@ -578,7 +591,7 @@ class Tapi(object):
                 return test_output_so_far
 
             except Exception, e:
-                raise 
+                raise
 
         else:
             test_output_so_far[run_subsection_name] = {}
